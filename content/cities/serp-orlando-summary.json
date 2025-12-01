@@ -1,0 +1,22 @@
+{
+  "city": "Orlando, FL",
+  "local_pack": [
+    "Two Maids",
+    "Merry Maids of Orlando",
+    "Annie Cleaning Services"
+  ],
+  "top_organic": [
+    {"url": "twomaidscleaning.com"},
+    {"url": "anniecleaningservices.com"},
+    {"url": "thecleaningauthority.com"},
+    {"url": "imaginemaids.com"},
+    {"url": "sparklymaid.com"}
+  ],
+  "service_types": [
+    "detailed service lists",
+    "booking steps",
+    "supplies provided",
+    "satisfaction guarantees",
+    "eco-friendly products"
+  ]
+} 

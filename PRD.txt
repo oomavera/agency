@@ -1,0 +1,105 @@
+📝 PRD: Agency Website Refactor
+Date: 2025-08-01
+Owner: Elias (Founder)
+Developer Implementation Environment: Claude Code / Modern JS full-stack
+Goal: Refactor landing page to improve conversions and simplify the UX
+
+🎯 Objective
+Redesign the main landing page (/) to remove friction by replacing the interactive booking calculator and 3D house visualization with a simpler, high-converting lead form. Move the booking estimator to a new route (/bookonline) for cleaner flow and performance.
+
+✅ Scope of Work
+1. Landing Page (/) Changes
+REMOVE:
+
+Booking calculator component (currently includes frequency, bed/bath, and add-ons selectors)
+
+3D house visualization (three.js element)
+
+Entire component wrapper that houses both
+
+ADD:
+
+New Lead Form Component titled "Quick Free Estimate" with fields:
+
+Full Name (text input)
+
+Phone Number (tel input)
+
+Email (email input)
+
+Submit Button labeled: Get Quick Estimate
+
+On submit:
+
+Save form data to leads table (or API endpoint /api/leads)
+
+Trigger Cal.com popup (use embedded widget)
+
+Responsive Layout Behavior:
+
+Desktop (min-width: 768px):
+
+Left: static image (marketing photo or branding graphic)
+
+Right: lead form (Quick Free Estimate)
+
+Mobile (max-width: 767px):
+
+Lead form is center-justified directly under the H1 ("Trusted House Cleaning for Greater Orlando")
+
+Form fields are full width
+
+2. New Page: /bookonline
+Move existing booking calculator UI to this route as a standalone booking flow
+
+Path: /bookonline
+
+Retain full feature logic: frequency, bed/bath selectors, add-ons dropdown, real-time price estimate
+
+Ensure SEO meta tags updated for this page (title, description: “Online Booking | Agency”)
+
+3. Deactivated Component: 3D House
+Temporarily remove from frontend DOM & app logic
+
+Leave component file in repo under /components/HouseVisualizer.tsx
+
+Flag it with a comment like: /* Deactivated: August 1, 2025 — may reinstate in future */
+
+🧩 Components to Build or Modify
+Component	Status	Notes
+LeadForm.tsx	New	Form component, mobile/desktop logic, Cal.com integration
+LandingPage.tsx	Modify	Remove old components, add LeadForm, adjust layout
+BookingCalculator.tsx	Move	Relocate and mount under /bookonline
+HouseVisualizer.tsx	Deprecated	Retain in codebase but not rendered
+
+🔌 Backend / API
+POST /api/leads
+
+Payload: { name, phone, email, source: 'Landing Page' }
+
+Return: 200 OK or error
+
+If backend DB is used (e.g., Postgres or Firebase), insert into leads table with timestamp
+
+🔗 Cal.com Integration
+Use Cal.com popup embed code (assume available)
+
+Trigger after successful form submission
+
+Allow re-opening with user action if needed
+
+Ensure accessibility (tab focus, closeable)
+
+📐 Visual / UI Notes
+Form fields should have clean borders, clear labels
+
+Desktop spacing should respect 12-column layout or Tailwind 2-column flex/grid
+
+Button should be prominent, contrast color, loading spinner during async submit
+
+🧪 QA / Acceptance Criteria
+Feature	Acceptance Criteria
+Landing form submission	Creates DB entry and opens Cal popup
+Mobile responsiveness	Form stacks center-justified below hero title
+Booking page	Full calculator experience works with same logic as old version
+No render of 3D house	Visualizer is not rendered anywhere

@@ -1,0 +1,28 @@
+# YAML Template for City Landing Pages
+# Fill in all fields for each city. Do not leave required fields blank.
+
+PRIMARY_KEYWORD: "house cleaning {City} FL"  # Main SEO keyword for the city page
+SECONDARY_KEYWORDS:  # List of secondary keywords for SEO
+  - "maid service {City}"
+  - "deep cleaning {City} FL"
+  - "recurring cleaning services {City}"
+CITY: "{City}"  # City name (e.g., Oviedo)
+COUNTY: "{County}"  # County name (e.g., Seminole)
+ZIP_CODES: ["", ""]  # List of ZIP codes served in this city
+NEIGHBORHOODS: []  # List of neighborhoods or areas in the city
+LANDMARKS: []  # List of notable landmarks or points of interest
+UNIQUE_VALUE_PROPS:  # Unique selling points for this city (e.g., "Locally trusted", "Eco-friendly")
+  - ""
+PRICING:
+  MODEL: "flat"  # Pricing model: flat (weekly, monthly, or bi-weekly)
+  AVG_VISIT: 0  # Average visit price (number only)
+REVIEWS:
+  - quote: ""  # Testimonial quote from a local customer
+    name: ""   # Name of the customer
+OFFER: ""  # Special offer for this city (e.g., "$25 off first clean")
+INTERNAL_LINKS:
+  - anchor: ""  # Anchor text for internal link
+    url: ""     # URL for internal link
+IMAGES_TO_CREATE:
+  - filename: ""  # Image filename (e.g., "oviedo-hero.jpg")
+    alt: ""      # Alt text for the image 

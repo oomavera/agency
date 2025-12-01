@@ -1,0 +1,129 @@
+{
+  "company": {
+    "name": "Molly Maid of North Orlando, Seminole and Volusia County",
+    "brand": "Molly Maid",
+    "ownership": "Locally Owned and Operated",
+    "parent_company": "Neighborly",
+    "contact": {
+      "phone": "(321) 677-1181",
+      "address": "1052 W State Rd 436, #2066, Altamonte Springs, FL, 32714"
+    },
+    "logos": [
+      "White Neighborly logo",
+      "Molly Maid logo"
+    ]
+  },
+  "services": {
+    "residential": true,
+    "light_commercial": true,
+    "offerings": [
+      {
+        "name": "One-Time Cleaning",
+        "description": "Professional one-time cleaning for events, spring cleaning, or catch-up."
+      },
+      {
+        "name": "Recurring Cleans",
+        "description": "Weekly, bi-weekly, or custom-schedule recurring cleaning."
+      },
+      {
+        "name": "Home Cleaning",
+        "description": "Full-service residential home cleaning."
+      },
+      {
+        "name": "Apartments and Condos",
+        "description": "Recurring apartment or condo cleaning."
+      },
+      {
+        "name": "Move Out Cleaning",
+        "description": "Tailored move-out cleaning services."
+      }
+    ],
+    "custom_cleaning": {
+      "description": "Flexible plans based on customer’s unique needs and preferences."
+    }
+  },
+  "promises_and_guarantees": {
+    "neighborly_done_right_promise": {
+      "description": "If not satisfied, call by next business day and they'll fix it free.",
+      "conditions": "Must report by end of next business day."
+    }
+  },
+  "reviews": {
+    "total_reviews": 1474,
+    "average_rating": 4.8,
+    "individual_reviews": [
+      {
+        "reviewer": "Mary S.",
+        "rating": 5,
+        "comment": "Very professional. Requested Naydelin and Route again."
+      },
+      {
+        "reviewer": "Bajan B.",
+        "rating": 5,
+        "comment": "Quick, easy, and professional. Great job by Heather & Haley."
+      },
+      {
+        "reviewer": "Nancy C.",
+        "rating": 5,
+        "comment": "Zee and Gladys did a great job. Pleasant and efficient."
+      },
+      {
+        "reviewer": "Solo L.",
+        "rating": 5,
+        "comment": "Team #6 did an outstanding job and were compassionate."
+      },
+      {
+        "reviewer": "Michael C.",
+        "rating": 5,
+        "comment": "Lexi and Anabel were productive and professional."
+      },
+      {
+        "reviewer": "Ronni D.",
+        "rating": 5,
+        "comment": "Rebecca and Alyssa (Team 4) did an awesome job."
+      }
+    ]
+  },
+  "service_area": [
+    "Altamonte Springs", "Apopka", "Casselberry", "Geneva", "Goldenrod", "Lake Mary",
+    "Lake Monroe", "Longwood", "Maitland", "Mid Florida", "Orlando", "Oviedo",
+    "Plymouth", "Sanford", "Sorrento", "Winter Park", "Winter Springs", "Zellwood"
+  ],
+  "faqs": [
+    {
+      "question": "How does your maid service work in Orlando and Seminole County?",
+      "answer": "Call or visit online for a free estimate; customized plans; satisfaction guaranteed if contacted by next business day."
+    },
+    {
+      "question": "Can I cancel my appointment?",
+      "answer": "Yes, up to 72 hours in advance."
+    },
+    {
+      "question": "What products do you use?",
+      "answer": "Industry-leading cleaning supplies. Call for details."
+    },
+    {
+      "question": "What is the Neighborly Done Right Promise®?",
+      "answer": "If dissatisfied, report by next business day and they'll fix it at no charge."
+    }
+  ],
+  "misc": {
+    "gift_certificates": true,
+    "careers": {
+      "description": "Opportunity to grow into a career. Respectful and supportive work culture.",
+      "call_to_action": "View All Open Positions"
+    },
+    "apps": {
+      "app_store": true,
+      "google_play": true
+    },
+    "foundation": {
+      "name": "Ms Molly Foundation",
+      "activities": [
+        "Donate", "Awards", "Shelter/Agency Support", "Board of Directors"
+      ]
+    },
+    "blog": "Practically Spotless Blog",
+    "tips": "Cleaning Tips"
+  }
+} 

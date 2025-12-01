@@ -1,0 +1,6 @@
+pages/house-cleaning-lake-mary-fl.html <-> pages/house-cleaning-longwood-fl.html: 61.9% overlap
+pages/house-cleaning-lake-mary-fl.html <-> pages/house-cleaning-oviedo-fl.html: 31.0% overlap
+pages/house-cleaning-lake-mary-fl.html <-> pages/house-cleaning-winter-park-fl.html: 30.3% overlap
+pages/house-cleaning-orlando-fl.html <-> pages/house-cleaning-oviedo-fl.html: 37.3% overlap
+pages/house-cleaning-orlando-fl.html <-> pages/house-cleaning-winter-park-fl.html: 32.2% overlap
+pages/house-cleaning-oviedo-fl.html <-> pages/house-cleaning-winter-park-fl.html: 37.7% overlap

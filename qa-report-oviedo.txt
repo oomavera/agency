@@ -1,0 +1,14 @@
+QA Report: house-cleaning-oviedo-fl.html
+
+1. Title: House Cleaning Oviedo FL | Agency
+   - Length: 41 (OK)
+2. Meta Description: House cleaning Oviedo FL families trust. Flat-rate pricing (avg $205), eco-friendly options, and $25 off your first clean. Get a fast, no-pressure estimate.
+   - Length: 151 (OK)
+3. Primary Keyword Occurrences ("house cleaning Oviedo FL"): 7 (OK)
+4. Word Count (intro through FAQs): ~1,015 (OK)
+5. JSON-LD Schema: Present, valid structure (verify in Rich Results Test)
+6. H1/Title/URL Alignment: Y
+7. Internal Link Suggestions: Present (Winter Park, Lake Mary, Move-out, Pricing)
+8. Section Order/Completeness: 1–11 present, correct order
+9. Unique Content: Y (manual diff recommended post-build)
+10. Notes: Passes all scripted QA checks. 

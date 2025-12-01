@@ -1,0 +1,152 @@
+{
+  "business": {
+    "name": "GoldMaids Team",
+    "location": "Central Florida",
+    "address": "1540 International Parkway, Suite 2000. Lake Mary, FL 32746",
+    "phone": "+1 (407) 732-0332",
+    "email": "contact@goldmaidsteam.com",
+    "hours": {
+      "Sunday": "8:30am–4:30pm",
+      "Monday": "8:30am–4:30pm",
+      "Tuesday": "8:30am–4:30pm",
+      "Wednesday": "8:30am–4:30pm",
+      "Thursday": "8:30am–4:30pm",
+      "Friday": "8:30am–4:30pm",
+      "Saturday": "8:30am–2:00pm"
+    },
+    "social": [
+      "Facebook",
+      "Twitter",
+      "Instagram",
+      "YouTube",
+      "Google"
+    ],
+    "service_area": [
+      "Lake Mary",
+      "Orlando",
+      "Apopka",
+      "Surrounding areas in Central Florida"
+    ],
+    "phone_display": "(407) 732-0332"
+  },
+  "services": {
+    "residential": [
+      "Recurring Cleaning",
+      "Move In/Out Cleaning",
+      "Maid and Housekeeping",
+      "Deep Cleaning (TTB Deluxe Cleaning)",
+      "Specialty Cleaning"
+    ],
+    "commercial": [
+      "Office Cleaning",
+      "Comercial Cleaning"
+    ],
+    "special": [
+      "Holiday Cleaning",
+      "Free Cleanings for Cancer Patients"
+    ]
+  },
+  "features": {
+    "customized_plans": true,
+    "eco_friendly_chemicals": true,
+    "top_equipment": true,
+    "trained_staff": true,
+    "no_contracts": true,
+    "CDC_guidelines": true,
+    "cleaning_for_a_reason_partner": true
+  },
+  "cleaning_frequencies": [
+    "Weekly",
+    "Bi-weekly",
+    "Monthly",
+    "One-time"
+  ],
+  "testimonials": [
+    {
+      "name": "Gigi Kwas",
+      "date": "2025-02-19",
+      "rating": 5,
+      "comment": "Was great! Showed up on time did a great job. Looks so much better. Great company and cares. Will use them again."
+    },
+    {
+      "name": "Ken Watkins",
+      "date": "2025-02-14",
+      "rating": 5,
+      "comment": "The cleaning ladies did a great job!"
+    },
+    {
+      "name": "Jessica Schmidt",
+      "date": "2025-01-23",
+      "rating": 5,
+      "comment": "I needed a last minute clean of my home and they were so professional and able to help me the next day!! Highly recommend :) thank you!"
+    },
+    {
+      "name": "Bunny Love",
+      "date": "2025-01-13",
+      "rating": 5,
+      "comment": "Very professional and detailed service. I highly recommend it to anyone looking for an experienced company. Sonia was wonderful. Thank you Sonia for the hard work! You were appreciated."
+    },
+    {
+      "name": "Dray Louk",
+      "date": "2024-12-16",
+      "rating": 5,
+      "comment": "Natalia did an amazing job. The whole team is fantastic. They're excellent communicators and are extremely responsive. Natalia was very thorough and efficient. I appreciated them giving me a follow up call just to check in and make sure I was happy. Absolutely wonderful people doing quality work at a fair price. Highly recommend."
+    },
+    {
+      "name": "DeAnne M.",
+      "date": "2024-11-19",
+      "rating": 5,
+      "comment": "They did a fantastic job. I highly recommend."
+    },
+    {
+      "name": "Heather S",
+      "date": "2024-11-15",
+      "rating": 5,
+      "comment": "She did a fantastic job cleaning our place. Will definitely use them again!"
+    },
+    {
+      "name": "audrey tobman",
+      "date": "2024-11-12",
+      "rating": 5,
+      "comment": "Today GoldMaids did a deep clean in our Apopka home. As a self proclaimed neat freak they exceeded my standards! They are extremely professional and Sonia was very thorough. What an exceptional job! We are looking forward to having biweekly cleanings."
+    },
+    {
+      "name": "olga s",
+      "date": "2024-11-01",
+      "rating": 5,
+      "comment": "They did such a great job cleaning the house. Very detailed oriented, professional and great communication. Will definitely be using them on a recurring basis"
+    }
+  ],
+  "process": {
+    "steps": [
+      "Talk to Our Team",
+      "Clean & Sanitize",
+      "Professional Staff",
+      "No Contracts"
+    ],
+    "standards": [
+      "Professional-Grade Disinfectant",
+      "Fresh Cloths in Each Home",
+      "Disinfected Cleaning Tools",
+      "Healthy Teams & Social Distancing",
+      "Unnecessary Contact Reduced"
+    ]
+  },
+  "values": {
+    "local_focus": true,
+    "eco_friendly": true,
+    "custom_plans": true,
+    "high_training": true,
+    "screened_staff": true,
+    "insured": true,
+    "employee_welfare": true
+  },
+  "call_to_action": {
+    "quote_url": "https://goldmaidsteam.com/#quote",
+    "book_now": "https://goldmaidsteam.com/book-now",
+    "contact": {
+      "phone": "+1 (407) 732-0332",
+      "email": "contact@goldmaidsteam.com"
+    }
+  }
+} 

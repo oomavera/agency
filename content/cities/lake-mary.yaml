@@ -1,0 +1,41 @@
+# Lake Mary City Data YAML
+PRIMARY_KEYWORD: "house cleaning Lake Mary FL"  # Main SEO keyword for the city page
+SECONDARY_KEYWORDS:
+  - "maid service Lake Mary"
+  - "deep cleaning Lake Mary FL"
+  - "recurring cleaning services Lake Mary"
+CITY: "Lake Mary"  # City name
+COUNTY: "Seminole"  # County name
+ZIP_CODES: ["32746"]  # ZIP code for Lake Mary
+NEIGHBORHOODS:
+  - "Heathrow"
+  - "Timacuan"
+  - "Cardinal Oaks Cove"
+  - "Huntington Pointe"
+  - "Lake Mary Woods"
+LANDMARKS:
+  - "Central Park at Lake Mary City Hall"
+  - "Trailblazer Park"
+  - "Lake Mary Farmers Market"
+  - "Colonial TownPark"
+UNIQUE_VALUE_PROPS:
+  - "Trusted by Lake Mary families and professionals"
+  - "Consistent, high-quality cleaning for busy households"
+  - "Flexible scheduling and eco-friendly cleaning"
+PRICING:
+  MODEL: "flat"  # Pricing model: flat (weekly, monthly, or bi-weekly)
+  AVG_VISIT: 210  # Average visit price (number only)
+REVIEWS:
+  - quote: "Agency always does a fantastic job. My home in Heathrow is spotless every time!"
+    name: "lauren"
+OFFER: "$25 off your first Lake Mary cleaning!"  # Special offer for this city
+INTERNAL_LINKS:
+  - anchor: "Oviedo house cleaning"
+    url: "/oviedo-house-cleaning/"
+  - anchor: "Winter Park maid service"
+    url: "/winter-park-cleaning-services/"
+IMAGES_TO_CREATE:
+  - filename: "lake-mary-hero.jpg"
+    alt: "Professional house cleaner in Lake Mary, FL living room"
+  - filename: "lake-mary-city-hall.jpg"
+    alt: "Central Park at Lake Mary City Hall landmark in Lake Mary, FL" 

@@ -1,0 +1,23 @@
+{
+  "city": "Lake Mary, FL",
+  "local_pack": [
+    "GoldMaids Team",
+    "Mariah’s Marvelous Maids LLC",
+    "Magnificent Shine LLC"
+  ],
+  "top_organic": [
+    {"url": "mycleaningangel.com"},
+    {"url": "madcleaning.net"},
+    {"url": "goldmaidsteam.com"},
+    {"url": "anagocleaning.com"},
+    {"url": "thecleaningauthority.com"}
+  ],
+  "service_types": [
+    "residential cleaning",
+    "commercial cleaning",
+    "family-owned operations",
+    "eco-friendly products",
+    "flexible scheduling",
+    "satisfaction guarantees"
+  ]
+} 

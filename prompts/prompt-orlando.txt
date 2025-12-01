@@ -1,0 +1,157 @@
+SYSTEM / ROLE:
+[...as provided in earlier SOP...]
+
+CONSTRAINTS:
+- 900–1,200 words
+- Use the primary keyword: house cleaning Orlando FL
+- City: Orlando
+- ...
+
+INPUT DATA:
+# Orlando City Data YAML
+PRIMARY_KEYWORD: "house cleaning Orlando FL"  # Main SEO keyword for the city page
+SECONDARY_KEYWORDS:
+  - "maid service Orlando"
+  - "deep cleaning Orlando FL"
+  - "recurring cleaning services Orlando"
+CITY: "Orlando"  # City name
+COUNTY: "Orange"  # County name
+ZIP_CODES: ["32801", "32803", "32804", "32806", "32814"]  # Central Orlando ZIP codes
+NEIGHBORHOODS:
+  - "Downtown Orlando"
+  - "Baldwin Park"
+  - "College Park"
+  - "Lake Eola Heights"
+  - "Thornton Park"
+LANDMARKS:
+  - "Lake Eola Park"
+  - "Amway Center"
+  - "Orlando Science Center"
+  - "Dr. Phillips Center for the Performing Arts"
+UNIQUE_VALUE_PROPS:
+  - "Trusted by Orlando families, professionals, and businesses"
+  - "Flexible scheduling for busy city lifestyles"
+  - "Eco-friendly cleaning options"
+PRICING:
+  MODEL: "flat"  # Pricing model: flat (weekly, monthly, or bi-weekly)
+  AVG_VISIT: 188  # Average visit price (number only)
+REVIEWS:
+  - quote: "Agency made my downtown apartment feel brand new. Highly recommend for anyone in Orlando!"
+    name: "patrick"
+OFFER: "$25 off your first Orlando cleaning!"  # Special offer for this city
+INTERNAL_LINKS:
+  - anchor: "Lake Mary house cleaning"
+    url: "/lake-mary-cleaning-services/"
+  - anchor: "Winter Park maid service"
+    url: "/winter-park-cleaning-services/"
+IMAGES_TO_CREATE:
+  - filename: "orlando-hero.jpg"
+    alt: "Professional house cleaner in Orlando, FL apartment"
+  - filename: "lake-eola-park.jpg"
+    alt: "Lake Eola Park landmark in Orlando, FL"
+
+SERP_RECON:
+{
+  "company": {
+    "name": "Molly Maid of North Orlando, Seminole and Volusia County",
+    "brand": "Molly Maid",
+    "ownership": "Locally Owned and Operated",
+    "parent_company": "Neighborly",
+    "contact": {
+      "phone": "(321) 677-1181",
+      "address": "1052 W State Rd 436, #2066, Altamonte Springs, FL, 32714"
+    },
+    "logos": [
+      "White Neighborly logo",
+      "Molly Maid logo"
+    ]
+  },
+  "services": {
+    "residential": true,
+    "light_commercial": true,
+    "offerings": [
+      {"name": "One-Time Cleaning", "description": "Professional one-time cleaning for events, spring cleaning, or catch-up."},
+      {"name": "Recurring Cleans", "description": "Weekly, bi-weekly, or custom-schedule recurring cleaning."},
+      {"name": "Home Cleaning", "description": "Full-service residential home cleaning."},
+      {"name": "Apartments and Condos", "description": "Recurring apartment or condo cleaning."},
+      {"name": "Move Out Cleaning", "description": "Tailored move-out cleaning services."}
+    ],
+    "custom_cleaning": {"description": "Flexible plans based on customer’s unique needs and preferences."}
+  },
+  "promises_and_guarantees": {
+    "neighborly_done_right_promise": {
+      "description": "If not satisfied, call by next business day and they'll fix it free.",
+      "conditions": "Must report by end of next business day."
+    }
+  },
+  "reviews": {
+    "total_reviews": 1474,
+    "average_rating": 4.8,
+    "individual_reviews": [
+      {"reviewer": "Mary S.", "rating": 5, "comment": "Very professional. Requested Naydelin and Route again."},
+      {"reviewer": "Bajan B.", "rating": 5, "comment": "Quick, easy, and professional. Great job by Heather & Haley."},
+      {"reviewer": "Nancy C.", "rating": 5, "comment": "Zee and Gladys did a great job. Pleasant and efficient."},
+      {"reviewer": "Solo L.", "rating": 5, "comment": "Team #6 did an outstanding job and were compassionate."},
+      {"reviewer": "Michael C.", "rating": 5, "comment": "Lexi and Anabel were productive and professional."},
+      {"reviewer": "Ronni D.", "rating": 5, "comment": "Rebecca and Alyssa (Team 4) did an awesome job."}
+    ]
+  },
+  "service_area": [
+    "Altamonte Springs", "Apopka", "Casselberry", "Geneva", "Goldenrod", "Lake Mary",
+    "Lake Monroe", "Longwood", "Maitland", "Mid Florida", "Orlando", "Oviedo",
+    "Plymouth", "Sanford", "Sorrento", "Winter Park", "Winter Springs", "Zellwood"
+  ],
+  "faqs": [
+    {"question": "How does your maid service work in Orlando and Seminole County?", "answer": "Call or visit online for a free estimate; customized plans; satisfaction guaranteed if contacted by next business day."},
+    {"question": "Can I cancel my appointment?", "answer": "Yes, up to 72 hours in advance."},
+    {"question": "What products do you use?", "answer": "Industry-leading cleaning supplies. Call for details."},
+    {"question": "What is the Neighborly Done Right Promise®?", "answer": "If dissatisfied, report by next business day and they'll fix it at no charge."}
+  ],
+  "misc": {
+    "gift_certificates": true,
+    "careers": {"description": "Opportunity to grow into a career. Respectful and supportive work culture.", "call_to_action": "View All Open Positions"},
+    "apps": {"app_store": true, "google_play": true},
+    "foundation": {"name": "Ms Molly Foundation", "activities": ["Donate", "Awards", "Shelter/Agency Support", "Board of Directors"]},
+    "blog": "Practically Spotless Blog",
+    "tips": "Cleaning Tips"
+  }
+}
+
+KEYWORDS:
+{
+  "primary_keyword": "house cleaning Orlando FL",
+  "secondary_keywords": [
+    "maid service Orlando",
+    "deep cleaning Orlando FL",
+    "move out cleaning Orlando",
+    "recurring cleaning Orlando",
+    "professional cleaning Orlando",
+    "eco-friendly cleaning Orlando",
+    "satisfaction guarantee cleaning Orlando"
+  ],
+  "entities": [
+    "Orlando",
+    "Two Maids",
+    "Merry Maids of Orlando",
+    "Annie Cleaning Services",
+    "The Cleaning Authority Orlando",
+    "Imagine Maids",
+    "Sparkly Maid",
+    "32801",
+    "32803",
+    "32804",
+    "32806",
+    "32814"
+  ]
+}
+
+OUTPUT FORMAT (exact order):
+1. <title>... (should include house cleaning Orlando FL and Orlando)
+...
+11. Word count
+
+QUALITY CHECKS:
+- Title/H1/URL alignment? Y/N
+- Primary keyword occurrences 5–12? Y/N
+- City-specific elements present? Y/N
+- ... 

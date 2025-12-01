@@ -1,0 +1,34 @@
+{
+  "categories": [
+    {
+      "id": "cleaning-tips",
+      "name": "Cleaning Tips",
+      "description": "Expert advice and techniques for maintaining a spotless home",
+      "color": "blue"
+    },
+    {
+      "id": "seasonal-cleaning",
+      "name": "Seasonal Cleaning", 
+      "description": "Seasonal guides and checklists for year-round home maintenance",
+      "color": "green"
+    },
+    {
+      "id": "behind-the-scenes",
+      "name": "Behind the Scenes",
+      "description": "Stories and insights from our professional cleaning team",
+      "color": "purple"
+    },
+    {
+      "id": "local-community",
+      "name": "Local Community",
+      "description": "Connecting with our Oviedo, Winter Park, and Orlando communities",
+      "color": "orange"
+    },
+    {
+      "id": "company-news",
+      "name": "Company News",
+      "description": "Updates and announcements from Agency",
+      "color": "indigo"
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "business": {
+    "name": "Ruby Red Cleaning",
+    "location": "Winter Park, FL",
+    "address": "1392 Lake Baldwin Lane, Orlando, FL 32814",
+    "phone": "(321) 348-7474",
+    "years_in_business": 20,
+    "google_reviews": 256,
+    "average_rating": "5.0",
+    "service_areas": [
+      "Winter Park", "Orlando", "Lake Nona", "Maitland", "Baldwin Park", "Surrounding areas"
+    ]
+  },
+  "value_props": [
+    "Over 200 5-star reviews",
+    "Locally owned and operated",
+    "Eco-friendly cleaning products",
+    "Customer satisfaction guarantee",
+    "Consistent and dependable service",
+    "Flexible scheduling for busy people"
+  ],
+  "services": [
+    "Recurring Maid Services (Weekly, Biweekly, or Monthly)",
+    "Deep House Cleaning Services (Basic Spring Cleaning, Deluxe Deep Cleaning)",
+    "Move-Out Cleaning Services (Basic and Deluxe packages)"
+  ],
+  "reviews": [
+    {
+      "name": "Alexandria Powers",
+      "date": "2025-07-21",
+      "rating": 5,
+      "comment": "My house always smells amazing after they finish cleaning. They take their time and pay attention to detail."
+    },
+    {
+      "name": "Kris Jerry",
+      "date": "2025-07-16",
+      "rating": 5,
+      "comment": "Move out service gets the job done. Very helpful staff willing to work with client requests. Price is getting a bit steep but honestly where isn't."
+    },
+    {
+      "name": "Rachel Lloyd",
+      "date": "2025-07-15",
+      "rating": 5,
+      "comment": "Had my initial cleaning and was very pleased! The team arrived on time and was very friendly to me (and my big baby girl Rottweiler)! They left my house sparkling clean and created an amazing environment to enjoy my weekend in! Great service!"
+    },
+    {
+      "name": "Beth Potter",
+      "date": "2025-07-10",
+      "rating": 5,
+      "comment": "We had a fantastic experience with Ruby Red Cleaning, and plan to continue our business with them. They deep cleaned my home and it looks great. The staff is friendly and professional. The prices are competitive and well worth the time they spend making your home look good. We highly recommend!!"
+    },
+    {
+      "name": "Candice Singh",
+      "date": "2025-07-10",
+      "rating": 5,
+      "comment": "I’ve been using Ruby Red Cleaning for a few months now and I cannot rave enough about them. The girls are professional and courteous. They are always keeping you updated on their cleaning process and any issues in which they may encounter. It’s such a pleasure coming home to a clean house every time. It’s the best part of the month :)"
+    }
+  ],
+  "landmarks": [
+    "Lake Baldwin Dog Park",
+    "Casa Feliz Historic Home & Venue",
+    "Albin Polasek Museum & Sculpture Gardens"
+  ],
+  "ctas": [
+    "Request A Quote",
+    "Call (321) 348-7474",
+    "Get a Free Estimate"
+  ]
+} 

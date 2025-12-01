@@ -1,0 +1,18 @@
+{
+  "authors": [
+    {
+      "id": "sarah-johnson",
+      "name": "Sarah Johnson",
+      "title": "Lead Cleaning Specialist",
+      "bio": "With over 8 years of experience in professional house cleaning, Sarah leads our team with expertise in deep cleaning techniques and eco-friendly solutions.",
+      "avatar": "/images/team/sarah-johnson.jpg"
+    },
+    {
+      "id": "curated-team",
+      "name": "Agency Team",
+      "title": "Professional Cleaning Experts",
+      "bio": "Our experienced team of cleaning professionals brings years of expertise to every home in Oviedo, Winter Park, and surrounding areas.",
+      "avatar": "/images/team/team-avatar.jpg"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+# Large binary files and SDKs that cause serialization issues
+google-cloud-sdk/
+google-cloud-cli-linux-x86_64.tar.gz
+supabase-linux-amd64.tar.gz
+
+# Large media files
+public/CleanVid2.mp4
+public/Wide2.mov
+public/*.mp4
+public/*.mov
+
+# Dependencies
+node_modules/
+
+# Build outputs
+.next/
+out/
+build/
+
+# TypeScript
+*.tsbuildinfo
+
+# Logs
+*.log
+
+# Windows metadata
+*:Zone.Identifier
+**/*.Zone.Identifier
+**/*.Identifier
+

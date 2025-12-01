@@ -1,0 +1,142 @@
+{
+  "business": {
+    "name": "My Cleaning Angel",
+    "phone": "(470) 287-9029",
+    "email": "info@mycleaningangel.com",
+    "address": "1509 W Carmen St, Unit 2205 Tampa, FL 33606",
+    "service_area": "Tampa, Florida and surrounding areas",
+    "booking": {
+      "online_booking_url": "https://mycleaningangel.com/book-now",
+      "estimate_process": "Online form in 60 seconds",
+      "payment_method": "Online only, billed after job is finished"
+    },
+    "apps": {
+      "iOS": "App Store",
+      "Android": "Google Play"
+    }
+  },
+  "services": {
+    "residential": [
+      "One Time Cleaning",
+      "Move In – Move Out Cleaning",
+      "Recurring Cleaning",
+      "Vacation Rental Cleaning",
+      "Deep Cleaning",
+      "Apartment Cleaning"
+    ],
+    "commercial": [
+      "Commercial Cleaning",
+      "Office Cleaning"
+    ],
+    "specialty": [
+      "Post Construction Cleaning"
+    ],
+    "frequency_options": [
+      "One-time",
+      "Weekly",
+      "Bi-weekly",
+      "Tri-weekly",
+      "Monthly"
+    ]
+  },
+  "features": {
+    "fast_booking": true,
+    "online_estimate": true,
+    "no_contracts": true,
+    "cashless_payment": true,
+    "reschedule_flexibility": "Free rescheduling up to one full calendar day in advance",
+    "supplies_included": true,
+    "cleaner_background_checked": true,
+    "feedback_requested": true,
+    "check-in_out_tracking": true
+  },
+  "process": {
+    "steps": [
+      {
+        "step": "Book in 60s",
+        "description": "Get a free online estimate by selecting home size, date, and time"
+      },
+      {
+        "step": "Pay Online",
+        "description": "Pay securely online when job is complete"
+      },
+      {
+        "step": "We Clean, You Relax",
+        "description": "Certified cleaner arrives and performs the job"
+      }
+    ]
+  },
+  "trust_and_quality": {
+    "quality_guarantee": true,
+    "screening_process": "Full background checks and in-person interviews",
+    "custom_checklists": true,
+    "dedicated_support": true,
+    "cashless": true,
+    "seamless_communication": true
+  },
+  "reviews_badges": {
+    "platforms": [
+      "Google",
+      "Facebook",
+      "Yelp",
+      "Angie's List"
+    ],
+    "customer_rating": "5 Stars"
+  },
+  "blog": [
+    {
+      "title": "Ultimate Bedroom Cleaning Before Move Out Checklist",
+      "author": "My Cleaning Angel",
+      "date": "2025-07-22",
+      "categories": ["Move Out Cleaning"]
+    },
+    {
+      "title": "How To Clean Pink Mold",
+      "author": "My Cleaning Angel",
+      "date": "2025-07-11",
+      "categories": ["Cleaning Tips", "How To"]
+    },
+    {
+      "title": "How Long Cleaning Your House Take: A Comprehensive Guide",
+      "author": "My Cleaning Angel",
+      "date": "2025-07-08",
+      "categories": ["Cleaning Tips", "House Cleaning"]
+    }
+  ],
+  "scheduling_app": {
+    "platforms": ["iOS", "Android"],
+    "features": ["Schedule", "Manage", "Track cleaning sessions"]
+  },
+  "navigation": {
+    "sections": [
+      "Residential",
+      "Commercial",
+      "Locations",
+      "About",
+      "Blog",
+      "Help",
+      "Login",
+      "Book Now"
+    ],
+    "legal_links": [
+      "Privacy Policy",
+      "Terms and Conditions",
+      "Insurance Policy"
+    ],
+    "resources": [
+      "Residential Cleaning Checklist",
+      "Office Cleaning Checklist"
+    ],
+    "company_links": [
+      "About Us",
+      "Join the Team",
+      "Gift Card",
+      "Happy Neighbors"
+    ]
+  },
+  "call_to_action": {
+    "headline": "House Cleaning & Maid Services In 60 Seconds or Less",
+    "slogan": "Get price by just selecting the type of service needed along with the size of your home",
+    "phone": "(470) 287-9029"
+  }
+} 

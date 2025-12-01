@@ -1,0 +1,22 @@
+SYSTEM / ROLE:
+[...as provided in earlier SOP...]
+
+CONSTRAINTS:
+- 900–1,200 words
+- Use the primary keyword: {PRIMARY_KEYWORD}
+- City: {CITY}
+- ...
+
+INPUT DATA:
+{{YAML_BLOCK}}
+
+OUTPUT FORMAT (exact order):
+1. <title>... (should include {PRIMARY_KEYWORD} and {CITY})
+...
+11. Word count
+
+QUALITY CHECKS:
+- Title/H1/URL alignment? Y/N
+- Primary keyword occurrences 5–12? Y/N
+- City-specific elements present? Y/N
+- ... 

@@ -1,0 +1,41 @@
+# Oviedo City Data YAML
+PRIMARY_KEYWORD: "house cleaning Oviedo FL"  # Main SEO keyword for the city page
+SECONDARY_KEYWORDS:
+  - "maid service Oviedo"
+  - "deep cleaning Oviedo FL"
+  - "recurring cleaning services Oviedo"
+CITY: "Oviedo"  # City name
+COUNTY: "Seminole"  # County name
+ZIP_CODES: ["32765", "32766"]  # ZIP codes for Oviedo
+NEIGHBORHOODS:
+  - "Alafaya Woods"
+  - "Live Oak Reserve"
+  - "Twin Rivers"
+  - "Remington Park"
+  - "Kingsbridge East"
+LANDMARKS:
+  - "Oviedo on the Park"
+  - "Lukas Nursery"
+  - "Black Hammock Wilderness Area"
+  - "Oviedo Mall"
+UNIQUE_VALUE_PROPS:
+  - "Locally trusted, background-checked cleaners"
+  - "Flexible scheduling for busy Oviedo families"
+  - "Eco-friendly cleaning options"
+PRICING:
+  MODEL: "flat"  # Pricing model: flat (weekly, monthly, or bi-weekly)
+  AVG_VISIT: 205  # Average visit price (number only)
+REVIEWS:
+  - quote: "Absolutely amazing service! My home in Alafaya Woods has never looked better. Highly recommend Agency!"
+    name: "Deja J."
+OFFER: "$25 off your first Oviedo cleaning!"  # Special offer for this city
+INTERNAL_LINKS:
+  - anchor: "Winter Park house cleaning"
+    url: "/winter-park-cleaning-services/"
+  - anchor: "Lake Mary maid service"
+    url: "/lake-mary-cleaning-services/"
+IMAGES_TO_CREATE:
+  - filename: "oviedo-hero.jpg"
+    alt: "Professional house cleaner in Oviedo, FL living room"
+  - filename: "oviedo-on-the-park.jpg"
+    alt: "Oviedo on the Park landmark in Oviedo, FL" 

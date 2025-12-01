@@ -1,0 +1,25 @@
+{
+  "city": "Oviedo, FL",
+  "local_pack": [
+    "HTD Cleaning Services",
+    "MaidPro – Orlando East",
+    "Merry Maids of Oviedo"
+  ],
+  "top_organic": [
+    {"url": "ashleyscleaningsolutions.com", "h1": "Cleaning & Organizing Service In Oviedo, Florida"},
+    {"url": "mycleaningangel.com", "h1": "House Cleaning Services Oviedo, FL"},
+    {"url": "twomaidscleaning.com", "h1": "Your day just got a whole lot better…"},
+    {"url": "royalmaidserviceoviedo.com", "h1": "Cleaning fit for Royalty"},
+    {"url": "limitlesscleaning.com", "h1": "Cleaning service serving Oviedo, FL and beyond!"}
+  ],
+  "service_types": [
+    "recurring cleaning",
+    "deep cleaning",
+    "move-in/out cleaning"
+  ],
+  "value_props": [
+    "trust",
+    "convenience",
+    "customer testimonials"
+  ]
+} 

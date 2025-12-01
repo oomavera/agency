@@ -1,0 +1,41 @@
+# Winter Park City Data YAML
+PRIMARY_KEYWORD: "house cleaning Winter Park FL"  # Main SEO keyword for the city page
+SECONDARY_KEYWORDS:
+  - "maid service Winter Park"
+  - "deep cleaning Winter Park FL"
+  - "recurring cleaning services Winter Park"
+CITY: "Winter Park"  # City name
+COUNTY: "Orange"  # County name
+ZIP_CODES: ["32789", "32792"]  # ZIP codes for Winter Park
+NEIGHBORHOODS:
+  - "Olde Winter Park"
+  - "Windsong"
+  - "Winter Park Pines"
+  - "Lake Killarney"
+  - "Orwin Manor"
+LANDMARKS:
+  - "Rollins College"
+  - "Central Park"
+  - "Mead Botanical Garden"
+  - "Winter Park Farmers' Market"
+UNIQUE_VALUE_PROPS:
+  - "Trusted by Winter Park families and professionals"
+  - "Attention to historic homes and luxury properties"
+  - "Flexible scheduling and eco-friendly cleaning"
+PRICING:
+  MODEL: "flat"  # Pricing model: flat (weekly, monthly, or bi-weekly)
+  AVG_VISIT: 218  # Average visit price (number only)
+REVIEWS:
+  - quote: "The team at Agency is always on time and leaves my home spotless. I love their attention to detail!"
+    name: "Ki Alexis"
+OFFER: "$25 off your first Winter Park cleaning!"  # Special offer for this city
+INTERNAL_LINKS:
+  - anchor: "Oviedo house cleaning"
+    url: "/oviedo-house-cleaning/"
+  - anchor: "Lake Mary maid service"
+    url: "/lake-mary-cleaning-services/"
+IMAGES_TO_CREATE:
+  - filename: "winter-park-hero.jpg"
+    alt: "Professional house cleaner in Winter Park, FL living room"
+  - filename: "rollins-college.jpg"
+    alt: "Rollins College landmark in Winter Park, FL" 

@@ -1,0 +1,70 @@
+{
+  "business_name": "Two Maids Cleaning",
+  "location": {
+    "store": "Oviedo",
+    "address": "89 Geneva Dr, Oviedo, FL 32765",
+    "phone": "(689) 207-5763",
+    "service_area": [
+      "Altamonte Springs", "Casselberry", "Lake Mary", "Longwood", "Oviedo", "Sanford", "Winter Springs",
+      "Tuskawilla", "Alaqua Lakes", "Black Hammock", "Chuluota", "Astor Farms", "Lake Monroe", "Forest City",
+      "Fern Park", "Geneva", "Goldenrod", "Heathrow", "Slavia", "Wekiva Springs", "Midway", "Sanlando Springs",
+      "Wilson Corner", "Valdez", "DeBary"
+    ]
+  },
+  "value_props": [
+    "More free time",
+    "Let Two Maids do the dirty work",
+    "We supply everything for your cleaning needs",
+    "Experienced house cleaners",
+    "Proven history in the house cleaning service"
+  ],
+  "features": {
+    "supplies_included": true,
+    "trained_staff": true,
+    "bonded_and_insured": true,
+    "over_20_years_experience": true,
+    "trusted_by_households": 1000
+  },
+  "social_impact": [
+    {
+      "program": "Cleaning for a Reason",
+      "description": "Donates services to support cancer patients and their families during treatment or hospice."
+    },
+    {
+      "program": "The Finley Project",
+      "description": "Supports grieving mothers after infant loss with a 7-part holistic program."
+    },
+    {
+      "program": "Alliance for HOPE",
+      "description": "Supports survivors of domestic violence, sexual assault, and child abuse through evidence-based programming."
+    },
+    {
+      "program": "Brady Wynn Foundation",
+      "description": "Helps families with infants suffering from neurological conditions by relieving home cleaning burdens."
+    }
+  ],
+  "testimonials": [
+    {
+      "name": "Janna Nephew",
+      "location": "Oviedo, FL",
+      "feedback": "Mickey and AJ were fantastic! Very professional and thorough. They contacted me when I requested and left the place clean and smelling great."
+    },
+    {
+      "name": "Liliana Seminara",
+      "location": "Oviedo, FL",
+      "feedback": "Great initial clean and very quick, looking forward to booking with them again."
+    }
+  ],
+  "media_mentions": [
+    "Yahoo! Life",
+    "Washington Post",
+    "Homes & Gardens",
+    "Better Homes & Gardens",
+    "Martha Stewart"
+  ],
+  "calls_to_action": [
+    "Book your cleaning",
+    "Calculate your price",
+    "Call for a free estimate"
+  ]
+} 

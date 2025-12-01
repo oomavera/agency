@@ -1,0 +1,23 @@
+{
+  "city": "Longwood, FL",
+  "local_pack": [
+    "Perfect Pear Roof & Exterior Cleaning",
+    "Rock Star Cleaning",
+    "Total Concord Cleaning"
+  ],
+  "top_organic": [
+    {"url": "mycleaningangel.com"},
+    {"url": "madcleaning.net"},
+    {"url": "totalconcordcleaning.com"},
+    {"url": "thesteammasterfl.com"},
+    {"url": "supermaids.com"}
+  ],
+  "service_types": [
+    "extensive FAQ section",
+    "service types",
+    "equipment",
+    "timing",
+    "scheduling",
+    "payment"
+  ]
+} 

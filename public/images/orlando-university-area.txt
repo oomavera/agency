@@ -1,0 +1,5 @@
+# Placeholder for orlando-university-area.jpg
+# Alt text: University area house cleaning
+# Size: Optimized for web (<200KB)
+# Format: WebP preferred, JPG fallback
+# Dimensions: 1200x800px (hero), 800x600px (landmarks)

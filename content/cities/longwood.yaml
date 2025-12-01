@@ -1,0 +1,41 @@
+# Longwood City Data YAML
+PRIMARY_KEYWORD: "house cleaning Longwood FL"  # Main SEO keyword for the city page
+SECONDARY_KEYWORDS:
+  - "maid service Longwood"
+  - "deep cleaning Longwood FL"
+  - "recurring cleaning services Longwood"
+CITY: "Longwood"  # City name
+COUNTY: "Seminole"  # County name
+ZIP_CODES: ["32750", "32779"]  # ZIP codes for Longwood
+NEIGHBORHOODS:
+  - "Sweetwater Oaks"
+  - "Wekiva Cove"
+  - "The Springs"
+  - "Sanlando Springs"
+  - "Longwood Club"
+LANDMARKS:
+  - "Big Tree Park"
+  - "Wekiva Island"
+  - "Bradlee-McIntyre House"
+  - "Reiter Park"
+UNIQUE_VALUE_PROPS:
+  - "Trusted by Longwood families and professionals"
+  - "Consistent, high-quality cleaning for busy households"
+  - "Flexible scheduling and eco-friendly cleaning"
+PRICING:
+  MODEL: "flat"  # Pricing model: flat (weekly, monthly, or bi-weekly)
+  AVG_VISIT: 220  # Average visit price (number only)
+REVIEWS:
+  - quote: "Agency is the best cleaning service I've used in Longwood. Always reliable and thorough!"
+    name: "rita"
+OFFER: "$25 off your first Longwood cleaning!"  # Special offer for this city
+INTERNAL_LINKS:
+  - anchor: "Orlando house cleaning"
+    url: "/orlando-house-cleaning/"
+  - anchor: "Lake Mary maid service"
+    url: "/lake-mary-cleaning-services/"
+IMAGES_TO_CREATE:
+  - filename: "longwood-hero.jpg"
+    alt: "Professional house cleaner in Longwood, FL living room"
+  - filename: "big-tree-park.jpg"
+    alt: "Big Tree Park landmark in Longwood, FL" 

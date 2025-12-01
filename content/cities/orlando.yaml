@@ -1,0 +1,41 @@
+# Orlando City Data YAML
+PRIMARY_KEYWORD: "house cleaning Orlando FL"  # Main SEO keyword for the city page
+SECONDARY_KEYWORDS:
+  - "maid service Orlando"
+  - "deep cleaning Orlando FL"
+  - "recurring cleaning services Orlando"
+CITY: "Orlando"  # City name
+COUNTY: "Orange"  # County name
+ZIP_CODES: ["32801", "32803", "32804", "32806", "32814"]  # Central Orlando ZIP codes
+NEIGHBORHOODS:
+  - "Downtown Orlando"
+  - "Baldwin Park"
+  - "College Park"
+  - "Lake Eola Heights"
+  - "Thornton Park"
+LANDMARKS:
+  - "Lake Eola Park"
+  - "Amway Center"
+  - "Orlando Science Center"
+  - "Dr. Phillips Center for the Performing Arts"
+UNIQUE_VALUE_PROPS:
+  - "Trusted by Orlando families, professionals, and businesses"
+  - "Flexible scheduling for busy city lifestyles"
+  - "Eco-friendly cleaning options"
+PRICING:
+  MODEL: "flat"  # Pricing model: flat (weekly, monthly, or bi-weekly)
+  AVG_VISIT: 188  # Average visit price (number only)
+REVIEWS:
+  - quote: "Agency made my downtown apartment feel brand new. Highly recommend for anyone in Orlando!"
+    name: "patrick"
+OFFER: "$25 off your first Orlando cleaning!"  # Special offer for this city
+INTERNAL_LINKS:
+  - anchor: "Lake Mary house cleaning"
+    url: "/lake-mary-cleaning-services/"
+  - anchor: "Winter Park maid service"
+    url: "/winter-park-cleaning-services/"
+IMAGES_TO_CREATE:
+  - filename: "orlando-hero.jpg"
+    alt: "Professional house cleaner in Orlando, FL apartment"
+  - filename: "lake-eola-park.jpg"
+    alt: "Lake Eola Park landmark in Orlando, FL" 

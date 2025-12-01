@@ -1,0 +1,5 @@
+# Placeholder for oviedo-on-the-park.jpg
+# Alt text: Oviedo on the Park landmark in Oviedo, FL
+# Size: Optimized for web (<200KB)
+# Format: WebP preferred, JPG fallback
+# Dimensions: 1200x800px (hero), 800x600px (landmarks)
