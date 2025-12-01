@@ -254,7 +254,7 @@ export async function POST(request: NextRequest) {
         );
       }
       const accessToken = process.env.META_ACCESS_TOKEN as string | undefined;
-      const pixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID as string | undefined || '1290791285375063';
+      const pixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID as string | undefined;
       if (accessToken && pixelId) {
         const headers = request.headers;
         const clientIp = headers.get('x-forwarded-for')?.split(',')[0] || headers.get('x-real-ip') || undefined;

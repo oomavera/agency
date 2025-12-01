@@ -23,7 +23,7 @@ declare global {
 
 // Loads Meta Pixel once per app session using the official fbq bootstrap stub
 export default function MetaPixel({
-    pixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID || "1290791285375063",
+    pixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID,
 }: MetaPixelProps) {
 	useEffect(() => {
 		if (!pixelId) return;
