@@ -13,8 +13,6 @@ export default function PinnedCountdownDesktopQuickEstimate() {
   const [mounted, setMounted] = useState(false);
   const [countdown, setCountdown] = useState(10);
   const [done, setDone] = useState(false);
-  // Time-based message state
-  const [isBusinessHours, setIsBusinessHours] = useState(true);
 
   const buttonRef = useRef<HTMLButtonElement | null>(null);
   const labelRef = useRef<HTMLSpanElement | null>(null);
@@ -22,18 +20,6 @@ export default function PinnedCountdownDesktopQuickEstimate() {
 
   useEffect(() => {
     setMounted(true);
-  }, []);
-
-  // Check if current time is between 6am-7pm
-  useEffect(() => {
-    const checkBusinessHours = () => {
-      const now = new Date();
-      const hour = now.getHours();
-      setIsBusinessHours(hour >= 6 && hour < 19); // 6am to 7pm
-    };
-    checkBusinessHours();
-    const interval = setInterval(checkBusinessHours, 60000); // Check every minute
-    return () => clearInterval(interval);
   }, []);
 
   useEffect(() => {
@@ -75,7 +61,7 @@ export default function PinnedCountdownDesktopQuickEstimate() {
       <div className="px-6 pointer-events-auto">
         <div className="max-w-5xl mx-auto bg-white rounded-3xl shadow-[0_10px_40px_rgba(0,0,0,0.18)] border border-black/5 ring-1 ring-black/5">
           <div className="px-6 pt-5 text-center text-midnight text-sm leading-snug font-nhd font-medium">
-            "Before you get your quick estimate... Check out what people like you had to say!"
+            Before you get your quick estimate... check out what people like you had to say!
           </div>
           <div className="p-5 pt-3">
             <button

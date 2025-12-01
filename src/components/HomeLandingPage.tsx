@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-import { FaEnvelope, FaMinus, FaPhone, FaPlus } from "react-icons/fa";
 import { ReactNode, useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import QuickEstimateForm from "./QuickEstimateForm";
@@ -8,7 +7,6 @@ import logo from "../../public/Gallery/LogoTransparent.png";
 import GlassCard from "./ui/GlassCard";
 import PastelBlob from "./ui/PastelBlob";
 import PillButton from "./ui/PillButton";
-import CircleIconButton from "./ui/CircleIconButton";
 // Swiper - dynamically imported for performance
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, EffectFade } from 'swiper/modules';
@@ -44,22 +42,6 @@ const DEFAULT_FORM_SUBMIT = "Get 10 Closed Bookings Free";
 const DEFAULT_POPUP_CALLOUT = "Sign Up Free Now!";
 const DEFAULT_POPUP_SUBMIT = "Get 10 Closed Bookings Free";
 const GLOW_BUTTON_CLASSES = "btn-glow-blue bg-gradient-to-r from-cyan-400 via-sky-500 to-blue-600 text-white ring-2 ring-sky-300/60 shadow-[0_12px_36px_rgba(56,189,248,0.35)] hover:shadow-[0_18px_44px_rgba(37,99,235,0.5)] hover:ring-4 transition-all duration-300";
-const BLUE_CTA_CLASSES = "bg-sky-600 hover:bg-sky-700 border-sky-600 text-white shadow-[0_15px_30px_rgba(14,165,233,0.35)] focus-visible:ring-sky-500/50";
-
-const bonusFaqItems = [
-	{
-		question: "Do I need to stock cleaning supplies or equipment?",
-		answer: "Every visit includes our Dream Clean Kit: commercial-grade vacuums with HEPA filtration, professional disinfectants, microfiber systems, and specialty brushes. You never have to buy or store supplies—we arrive fully equipped so Oviedo homes get the same polished finish every single time.",
-	},
-	{
-		question: "How do you keep my recurring schedule on track?",
-		answer: "Skip the Line priority service reserves your preferred day, time, and crew. Your dedicated team shows up on the cadence you choose—weekly, bi-weekly, or monthly—so there are no surprise gaps, random faces, or long reschedule waits.",
-	},
-	{
-		question: "Who exactly is coming into my home?",
-		answer: "Our Pro Trainer System screens hundreds of applicants each quarter, conducts multi-stage interviews, and runs full background plus insurance checks before onboarding. Only the top candidates graduate into field training, meaning the professionals caring for your home are vetted, insured, and coached to our 5-Star Promise.",
-	},
-];
 
 interface HomeLandingPageProps {
 	formPage?: string;
@@ -101,7 +83,6 @@ export default function HomeLandingPage({
 
 	// Idle-mount ParallaxAurora
 	const [showAurora, setShowAurora] = useState(false);
-	const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
 	useEffect(() => {
 		if (typeof window === 'undefined') return;
 		const cb = () => setShowAurora(true);
