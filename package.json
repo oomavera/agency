@@ -44,6 +44,7 @@
     "@vercel/analytics": "^1.5.0",
     "@vercel/speed-insights": "^1.2.0",
     "framer-motion": "^12.23.3",
+    "glob": "^13.0.0",
     "gray-matter": "^4.0.3",
     "next": "15.3.5",
     "next-mdx-remote": "^5.0.0",
@@ -53,6 +54,7 @@
     "reading-time": "^1.5.0",
     "rehype-slug": "^6.0.0",
     "remark-gfm": "^4.0.1",
+    "rimraf": "^6.1.2",
     "swiper": "^12.0.2",
     "three": "^0.178.0"
   },

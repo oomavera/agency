@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { dispatchLead } from "../../lib/leadSubmit";
 import { LeadForm as LeadFormType, Quote } from "../../types/quote";
 // Using API route for database writes to centralize validation and schema handling
 
@@ -53,7 +54,7 @@ export default function LeadForm({ quote, onCancel, isSubmitting }: LeadFormProp
     }
   };
 
-  const handleShowEstimate = async (e: React.FormEvent) => {
+  const handleShowEstimate = (e: React.FormEvent) => {
     e.preventDefault();
     
     // Validate just the basic contact info
@@ -89,28 +90,20 @@ export default function LeadForm({ quote, onCancel, isSubmitting }: LeadFormProp
     try {
       const eventId = `lead-${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
       const externalId = formData.email || formData.phone || formData.name || undefined;
-      const response = await fetch('/api/leads', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: formData.name,
-          phone: formData.phone,
-          email: formData.email,
-          service: 'estimate_request',
-          eventId,
-          externalId,
-          quote: {
-            input: quote.input,
-            subtotal: quote.subtotal,
-          }
-        })
+      dispatchLead({
+        name: formData.name,
+        phone: formData.phone,
+        email: formData.email,
+        service: 'estimate_request',
+        eventId,
+        externalId,
+        quote: {
+          input: quote.input,
+          subtotal: quote.subtotal,
+        }
       });
-      if (!response.ok) {
-        const err = await response.json().catch(() => ({ error: 'Unknown error' }));
-        console.error('Error saving lead on Show Estimate (API):', err);
-      }
     } catch (err) {
-      console.error('Unexpected error saving lead on Show Estimate (API):', err);
+      console.error('Unexpected error starting lead dispatch on Show Estimate (API):', err);
     }
     // On success, route visitors to /schedule
     if (typeof window !== 'undefined') {

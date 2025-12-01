@@ -41,32 +41,37 @@ const buildDescription = (lead: ClickUpLeadPayload) => {
 
 export async function addLeadToClickUp(lead: ClickUpLeadPayload): Promise<ClickUpLeadResult> {
   const apiToken = process.env.CLICKUP_API_TOKEN;
-  const listId = process.env.CLICKUP_LEAD_LIST_ID || process.env.CLICKUP_LIST_ID;
+  const listId = (process.env.CLICKUP_LEAD_LIST_ID || process.env.CLICKUP_LIST_ID || '').trim();
 
   if (!apiToken || !listId) {
     console.warn('ClickUp integration skipped: missing CLICKUP_API_TOKEN or CLICKUP_LEAD_LIST_ID');
     return { success: false, skipped: true, error: 'Missing ClickUp configuration' };
   }
 
+  if (!/^\d+$/.test(listId)) {
+    console.warn('ClickUp list id looks non-numeric. Make sure CLICKUP_LEAD_LIST_ID is set to the numeric List ID (Settings → More → Copy ID). Current value:', listId);
+  }
+
   const tags = new Set<string>(['lead']);
   if (lead.page) tags.add(lead.page);
   if (lead.source) tags.add(lead.source.toLowerCase().replace(/\s+/g, '-'));
 
-  const payload: Record<string, unknown> = {
+  const basePayload: Record<string, unknown> = {
     name: lead.page ? `${lead.name} (${lead.page})` : lead.name,
     description: buildDescription(lead),
     tags: Array.from(tags),
     notify_all: false,
   };
 
-  const status = process.env.CLICKUP_LEAD_STATUS;
-  if (status) payload.status = status;
+  // Default status to "lead" unless overridden
+  const status = (process.env.CLICKUP_LEAD_STATUS || 'lead').trim();
+  if (status) basePayload.status = status;
 
   const priorityEnv = process.env.CLICKUP_LEAD_PRIORITY;
   if (priorityEnv) {
     const priority = Number(priorityEnv);
     if (Number.isInteger(priority) && priority >= 1 && priority <= 4) {
-      payload.priority = priority;
+      basePayload.priority = priority;
     }
   }
 
@@ -74,7 +79,7 @@ export async function addLeadToClickUp(lead: ClickUpLeadPayload): Promise<ClickU
     process.env.CLICKUP_LEAD_ASSIGNEE_IDS || process.env.CLICKUP_LEAD_ASSIGNEE_ID
   );
   if (assigneeIds.length) {
-    payload.assignees = assigneeIds;
+    basePayload.assignees = assigneeIds;
   }
 
   const customFields: Array<{ id: string; value: string }> = [];
@@ -95,27 +100,43 @@ export async function addLeadToClickUp(lead: ClickUpLeadPayload): Promise<ClickU
   }
 
   if (customFields.length) {
-    payload.custom_fields = customFields;
+    basePayload.custom_fields = customFields;
   }
 
-  const response = await fetch(`${CLICKUP_API_BASE}/list/${listId}/task`, {
-    method: 'POST',
-    headers: {
-      Authorization: apiToken,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(payload),
-    cache: 'no-store',
-  });
+  const sendTask = async (payload: Record<string, unknown>) => {
+    const response = await fetch(`${CLICKUP_API_BASE}/list/${listId}/task`, {
+      method: 'POST',
+      headers: {
+        Authorization: apiToken,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+      cache: 'no-store',
+    });
+    const responseText = await response.text();
+    return { response, responseText };
+  };
 
-  const responseText = await response.text();
+  // First attempt (with status)
+  const firstAttempt = await sendTask(basePayload);
+  let response = firstAttempt.response;
+  let responseText = firstAttempt.responseText;
+
+  // If status fails (likely invalid status on this list), retry without status so leads still land
+  if (!response.ok && response.status >= 400 && response.status < 500 && basePayload.status) {
+    console.error('ClickUp API error on first attempt (will retry without status)', response.status, responseText);
+    const { status: _omitStatus, ...fallbackPayload } = basePayload;
+    const secondAttempt = await sendTask(fallbackPayload);
+    response = secondAttempt.response;
+    responseText = secondAttempt.responseText;
+  }
 
   if (!response.ok) {
     console.error('ClickUp API error', response.status, responseText);
     return {
       success: false,
       skipped: false,
-      error: `ClickUp API request failed with ${response.status}`,
+      error: `ClickUp API request failed with ${response.status}: ${responseText || 'no body'}`,
     };
   }
 

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import PillButton from "./ui/PillButton";
 import { track } from "../lib/ga4";
+import { dispatchLead } from "../lib/leadSubmit";
 
 interface QuickEstimateFormProps {
 	onSubmitSuccess?: () => void;
@@ -35,63 +36,49 @@ export default function QuickEstimateForm({ onSubmitSuccess, title = "Sign Up Fr
 		}));
 	};
 
-	const handleSubmit = async (e: React.FormEvent) => {
+	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
+		if (isSubmitting) return;
 		setIsSubmitting(true);
 		setError(null);
 
-		try {
-			// Generate a deduplication event_id to share with server-side CAPI
-			const eventId = `lead-${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
-			// Build a lightweight external_id (sha256 will be applied on server if needed)
-			const externalId = formData.email || formData.phone || formData.name || undefined;
-			const response = await fetch('/api/leads', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-				body: JSON.stringify({
-					...formData,
-					source: 'Landing Page',
-					page, // Add page identifier
-					eventId,
-					externalId,
-					suppressMeta: true,
-				}),
-			});
+		// Generate a deduplication event_id to share with server-side CAPI
+		const eventId = `lead-${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
+		// Build a lightweight external_id (sha256 will be applied on server if needed)
+		const externalId = formData.email || formData.phone || formData.name || undefined;
 
-			if (!response.ok) {
-				throw new Error('Failed to submit form');
-			}
+		dispatchLead({
+			...formData,
+			source: 'Landing Page',
+			page, // Add page identifier
+			eventId,
+			externalId,
+			suppressMeta: true,
+		});
 
-			setSuccess(true);
+		// GA4 event: lead submit (main form)
+		try { track({ name: 'lead_submit', params: { form: 'offer_main' } }); } catch {}
 
-			// GA4 event: lead submit (main form)
-			try { track({ name: 'lead_submit', params: { form: 'offer_main' } }); } catch {}
-
-			// Meta Pixel conversion (only when enabled)
-			if (trackMetaLead && typeof window !== 'undefined') {
-				const fbq = (window as typeof window & { fbq?: (...args: unknown[]) => void }).fbq;
-				try {
-					fbq?.('track', metaEventName, {
-						event_id: eventId,
-						content_name: 'Offer Lead',
-						event_source: 'offer',
-						lead_source: 'main_form'
-					});
-				} catch {}
-			}
-			// Redirect after successful submission
-			if (typeof window !== 'undefined') {
-				window.location.assign(redirectPath);
-				return;
-			}
-			onSubmitSuccess?.();
-		} catch {
-			setError('Something went wrong. Please try again or call us directly.');
-		} finally {
-			setIsSubmitting(false);
+		// Meta Pixel conversion (only when enabled)
+		if (trackMetaLead && typeof window !== 'undefined') {
+			const fbq = (window as typeof window & { fbq?: (...args: unknown[]) => void }).fbq;
+			try {
+				fbq?.('track', metaEventName, {
+					event_id: eventId,
+					content_name: 'Offer Lead',
+					event_source: 'offer',
+					lead_source: 'main_form'
+				});
+			} catch {}
 		}
+		// Redirect after submission without waiting on integrations
+		if (typeof window !== 'undefined') {
+			window.location.assign(redirectPath);
+			return;
+		}
+		onSubmitSuccess?.();
+		setSuccess(true);
+		setIsSubmitting(false);
 	};
 
 	if (success) {

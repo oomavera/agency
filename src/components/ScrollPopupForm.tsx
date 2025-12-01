@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import GlassCard from "./ui/GlassCard";
 import PillButton from "./ui/PillButton";
 import { track } from "../lib/ga4";
+import { dispatchLead } from "../lib/leadSubmit";
 
 interface ScrollPopupFormProps {
   triggerElement?: string; // CSS selector for trigger element
@@ -91,72 +92,52 @@ export default function ScrollPopupForm({ triggerElement = "#reviews", callout =
     }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (isSubmitting) return;
     setIsSubmitting(true);
 
-    try {
-      // Generate dedup event id
-      const eventId = `lead-${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
-      const externalId = formData.email || formData.phone || formData.name || undefined;
-      const payload = {
-        ...formData,
-        source: 'Popup Lead Form',
-        page, // Add page identifier
-        eventId,
-        externalId,
-        suppressMeta: true,
-      };
-      
-      console.log('Submitting popup form with:', payload);
+    // Generate dedup event id
+    const eventId = `lead-${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
+    const externalId = formData.email || formData.phone || formData.name || undefined;
+    const payload = {
+      ...formData,
+      source: 'Popup Lead Form',
+      page, // Add page identifier
+      eventId,
+      externalId,
+      suppressMeta: true,
+    };
+    
+    console.log('Submitting popup form with:', payload);
 
-      const response = await fetch('/api/leads', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(payload),
-      });
+    dispatchLead(payload);
+    setSuccess(true);
 
-      console.log('Response status:', response.status);
+    // GA4 event: lead submit (popup form)
+    try { track({ name: 'lead_submit', params: { form: 'offer_popup' } }); } catch {}
 
-      if (!response.ok) {
-        const errorText = await response.text();
-        console.error('API Error:', response.status, errorText);
-        throw new Error(`Failed to submit form: ${response.status}`);
-      }
-
-      setSuccess(true);
-
-      // GA4 event: lead submit (popup form)
-      try { track({ name: 'lead_submit', params: { form: 'offer_popup' } }); } catch {}
-
-      // Meta Pixel conversion (only when enabled)
-      if (trackMetaLead && typeof window !== 'undefined') {
-        const fbq = (window as typeof window & { fbq?: (...args: unknown[]) => void }).fbq;
-        try {
-          fbq?.('track', metaEventName, {
-            event_id: eventId,
-            content_name: 'Offer Lead',
-            event_source: 'offer',
-            lead_source: 'popup_form'
-          });
-        } catch {}
-      }
-			// Redirect to reviews after success
-			if (typeof window !== 'undefined') {
-				window.location.assign(redirectPath);
-				return;
-			}
-      setTimeout(() => {
-        closePopup();
-      }, 10000); // Auto-close after 10 seconds
-    } catch (error) {
-      console.error('Form submission error:', error);
-      alert('Submission failed. Please try again or call us directly.');
-    } finally {
-      setIsSubmitting(false);
+    // Meta Pixel conversion (only when enabled)
+    if (trackMetaLead && typeof window !== 'undefined') {
+      const fbq = (window as typeof window & { fbq?: (...args: unknown[]) => void }).fbq;
+      try {
+        fbq?.('track', metaEventName, {
+          event_id: eventId,
+          content_name: 'Offer Lead',
+          event_source: 'offer',
+          lead_source: 'popup_form'
+        });
+      } catch {}
     }
+		// Redirect to reviews after success without waiting on API
+		if (typeof window !== 'undefined') {
+			window.location.assign(redirectPath);
+			return;
+		}
+    setTimeout(() => {
+      closePopup();
+    }, 10000); // Auto-close after 10 seconds in fallback environments
+    setIsSubmitting(false);
   };
 
   return (
