@@ -51,3 +51,10 @@ google-cloud-sdk/
 # Ignore local Google Cloud SDK
 google-cloud-sdk/
 google-cloud-cli-linux-x86_64.tar.gz
+
+# large video assets (host externally to keep repo lean)
+*.mp4
+*.mov
+*.mkv
+*.webm
+*.avi
