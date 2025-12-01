@@ -18,6 +18,8 @@ const DynamicAurora = dynamic(() => import("../../components/ui/ParallaxAurora")
 const QuickEstimateForm = dynamic(() => import("../../components/QuickEstimateForm"), { ssr: false });
 const ScrollPopupForm = dynamic(() => import("../../components/ScrollPopupForm"), { ssr: false });
 
+const GLOW_BUTTON_CLASSES = "btn-glow-blue bg-gradient-to-r from-cyan-400 via-sky-500 to-blue-600 text-white ring-2 ring-sky-300/60 shadow-[0_12px_36px_rgba(56,189,248,0.35)] hover:shadow-[0_18px_44px_rgba(37,99,235,0.5)] hover:ring-4 transition-all duration-300";
+
 export default function OfferPage() {
 
 	// Removed Cal.com
