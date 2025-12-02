@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import PillButton from "./ui/PillButton";
 import { track } from "../lib/ga4";
 import { dispatchLead } from "../lib/leadSubmit";
+import SurveyModal, { SurveyAnswers } from "./SurveyModal";
 
 interface QuickEstimateFormProps {
 	onSubmitSuccess?: () => void;
@@ -27,6 +28,9 @@ export default function QuickEstimateForm({ onSubmitSuccess, title = "Sign Up Fr
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const [error, setError] = useState<string | null>(null);
 	const [success, setSuccess] = useState(false);
+  const [showSurvey, setShowSurvey] = useState(false);
+  const [pendingPayload, setPendingPayload] = useState<Record<string, unknown> | null>(null);
+  const [leadDispatched, setLeadDispatched] = useState(false);
 
 	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target;
@@ -41,20 +45,23 @@ export default function QuickEstimateForm({ onSubmitSuccess, title = "Sign Up Fr
 		if (isSubmitting) return;
 		setIsSubmitting(true);
 		setError(null);
+    setLeadDispatched(false);
 
 		// Generate a deduplication event_id to share with server-side CAPI
 		const eventId = `lead-${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
 		// Build a lightweight external_id (sha256 will be applied on server if needed)
 		const externalId = formData.email || formData.phone || formData.name || undefined;
 
-		dispatchLead({
-			...formData,
-			source: 'Landing Page',
-			page, // Add page identifier
-			eventId,
-			externalId,
-			suppressMeta: true,
-		});
+    const basePayload = {
+      ...formData,
+      source: 'Landing Page',
+      page, // Add page identifier
+      eventId,
+      externalId,
+      suppressMeta: true,
+    };
+    setPendingPayload(basePayload);
+    setShowSurvey(true);
 
 		// GA4 event: lead submit (main form)
 		try { track({ name: 'lead_submit', params: { form: 'offer_main' } }); } catch {}
@@ -71,15 +78,34 @@ export default function QuickEstimateForm({ onSubmitSuccess, title = "Sign Up Fr
 				});
 			} catch {}
 		}
-		// Redirect after submission without waiting on integrations
-		if (typeof window !== 'undefined') {
-			window.location.assign(redirectPath);
-			return;
-		}
-		onSubmitSuccess?.();
-		setSuccess(true);
-		setIsSubmitting(false);
+    setIsSubmitting(false);
 	};
+
+  const dispatchWithSurvey = (answers?: SurveyAnswers) => {
+    if (!pendingPayload) return;
+    const payload = answers ? { ...pendingPayload, survey: answers } : pendingPayload;
+    dispatchLead(payload);
+    setLeadDispatched(true);
+  };
+
+  const handleSurveyComplete = (answers: SurveyAnswers) => {
+    dispatchWithSurvey(answers);
+    setShowSurvey(false);
+    setSuccess(true);
+    if (typeof window !== 'undefined') {
+      window.location.assign(redirectPath);
+      return;
+    }
+    onSubmitSuccess?.();
+  };
+
+  const handleSurveyClose = () => {
+    if (!leadDispatched) {
+      dispatchWithSurvey();
+    }
+    setShowSurvey(false);
+    setIsSubmitting(false);
+  };
 
 	if (success) {
 		return (
@@ -119,6 +145,8 @@ export default function QuickEstimateForm({ onSubmitSuccess, title = "Sign Up Fr
 	}
 
 	return (
+    <>
+      <SurveyModal open={showSurvey} onClose={handleSurveyClose} onComplete={handleSurveyComplete} />
 		<motion.div 
 			className="relative overflow-hidden text-white border border-sky-200/30 rounded-[10px] sm:rounded-lg p-2 sm:rounded-lg sm:p-4 shadow-[0_16px_36px_rgba(0,0,0,0.35)] bg-[#0a1324] ring-[0.5px] ring-sky-300/30"
 			initial={{ opacity: 0, y: 20 }}
@@ -207,5 +235,6 @@ export default function QuickEstimateForm({ onSubmitSuccess, title = "Sign Up Fr
 			</form>
 			</div>
 		</motion.div>
+    </>
 	);
 }

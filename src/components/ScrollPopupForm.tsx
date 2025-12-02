@@ -5,6 +5,7 @@ import GlassCard from "./ui/GlassCard";
 import PillButton from "./ui/PillButton";
 import { track } from "../lib/ga4";
 import { dispatchLead } from "../lib/leadSubmit";
+import SurveyModal, { SurveyAnswers } from "./SurveyModal";
 
 interface ScrollPopupFormProps {
   triggerElement?: string; // CSS selector for trigger element
@@ -27,6 +28,9 @@ export default function ScrollPopupForm({ triggerElement = "#reviews", callout =
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [showSurvey, setShowSurvey] = useState(false);
+  const [pendingPayload, setPendingPayload] = useState<Record<string, unknown> | null>(null);
+  const [leadDispatched, setLeadDispatched] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -96,6 +100,7 @@ export default function ScrollPopupForm({ triggerElement = "#reviews", callout =
     e.preventDefault();
     if (isSubmitting) return;
     setIsSubmitting(true);
+    setLeadDispatched(false);
 
     // Generate dedup event id
     const eventId = `lead-${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
@@ -111,8 +116,8 @@ export default function ScrollPopupForm({ triggerElement = "#reviews", callout =
     
     console.log('Submitting popup form with:', payload);
 
-    dispatchLead(payload);
-    setSuccess(true);
+    setPendingPayload(payload);
+    setShowSurvey(true);
 
     // GA4 event: lead submit (popup form)
     try { track({ name: 'lead_submit', params: { form: 'offer_popup' } }); } catch {}
@@ -129,7 +134,21 @@ export default function ScrollPopupForm({ triggerElement = "#reviews", callout =
         });
       } catch {}
     }
-		// Redirect to reviews after success without waiting on API
+    setIsSubmitting(false);
+  };
+
+  const dispatchWithSurvey = (answers?: SurveyAnswers) => {
+    if (!pendingPayload) return;
+    const payload = answers ? { ...pendingPayload, survey: answers } : pendingPayload;
+    dispatchLead(payload);
+    setLeadDispatched(true);
+  };
+
+  const handleSurveyComplete = (answers: SurveyAnswers) => {
+    dispatchWithSurvey(answers);
+    setSuccess(true);
+    setShowSurvey(false);
+		// Redirect to reviews after success
 		if (typeof window !== 'undefined') {
 			window.location.assign(redirectPath);
 			return;
@@ -137,10 +156,19 @@ export default function ScrollPopupForm({ triggerElement = "#reviews", callout =
     setTimeout(() => {
       closePopup();
     }, 10000); // Auto-close after 10 seconds in fallback environments
+  };
+
+  const handleSurveyClose = () => {
+    if (!leadDispatched) {
+      dispatchWithSurvey();
+    }
+    setShowSurvey(false);
     setIsSubmitting(false);
   };
 
   return (
+    <>
+      <SurveyModal open={showSurvey} onClose={handleSurveyClose} onComplete={handleSurveyComplete} />
     <AnimatePresence>
       {showPopup && (
         <motion.div
@@ -252,5 +280,6 @@ export default function ScrollPopupForm({ triggerElement = "#reviews", callout =
         </motion.div>
       )}
     </AnimatePresence>
+    </>
   );
 }

@@ -6,6 +6,11 @@ export interface ClickUpLeadPayload {
   email?: string | null;
   page?: string;
   source?: string;
+  survey?: {
+    businessType?: string;
+    website?: string;
+    revenueRange?: string;
+  };
 }
 
 export interface ClickUpLeadResult {
@@ -34,6 +39,10 @@ const buildDescription = (lead: ClickUpLeadPayload) => {
     `Name: ${lead.name}`,
     `Phone: ${lead.phone}`,
     lead.email ? `Email: ${lead.email}` : null,
+    lead.survey ? '--- Survey ---' : null,
+    lead.survey?.businessType ? `Business Type: ${lead.survey.businessType}` : null,
+    lead.survey?.website ? `Website: ${lead.survey.website}` : null,
+    lead.survey?.revenueRange ? `Monthly Revenue: ${lead.survey.revenueRange}` : null,
   ].filter(Boolean);
 
   return segments.join('\n');
@@ -55,6 +64,7 @@ export async function addLeadToClickUp(lead: ClickUpLeadPayload): Promise<ClickU
   const tags = new Set<string>(['lead']);
   if (lead.page) tags.add(lead.page);
   if (lead.source) tags.add(lead.source.toLowerCase().replace(/\s+/g, '-'));
+  if (lead.survey?.businessType) tags.add(lead.survey.businessType.toLowerCase().replace(/\s+/g, '-'));
 
   const basePayload: Record<string, unknown> = {
     name: lead.page ? `${lead.name} (${lead.page})` : lead.name,

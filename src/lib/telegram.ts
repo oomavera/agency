@@ -11,12 +11,18 @@ export async function sendTelegramLead({
   email,
   page,
   source,
+  survey,
 }: {
   name: string;
   phone: string;
   email?: string | null;
   page?: string;
   source?: string;
+  survey?: {
+    businessType?: string;
+    website?: string;
+    revenueRange?: string;
+  };
 }): Promise<TelegramResult> {
   const botToken = process.env.TG_BOT_TOKEN;
   const chatId = process.env.TG_CHAT_ID;
@@ -33,6 +39,10 @@ export async function sendTelegramLead({
     email ? `Email: ${email}` : null,
     page ? `Page: ${page}` : null,
     source ? `Source: ${source}` : null,
+    survey ? '--- Survey ---' : null,
+    survey?.businessType ? `Business Type: ${survey.businessType}` : null,
+    survey?.website ? `Website: ${survey.website}` : null,
+    survey?.revenueRange ? `Monthly Revenue: ${survey.revenueRange}` : null,
   ].filter(Boolean);
 
   const message = lines.join('\n');

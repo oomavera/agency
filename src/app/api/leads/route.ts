@@ -9,7 +9,19 @@ export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     console.log('API received payload:', body);
-    const { name, phone, email, eventId, externalId, page } = body as { name?: string; phone?: string; email?: string; eventId?: string; externalId?: string; page?: string };
+    const { name, phone, email, eventId, externalId, page } = body as {
+      name?: string;
+      phone?: string;
+      email?: string;
+      eventId?: string;
+      externalId?: string;
+      page?: string;
+      survey?: {
+        businessType?: string;
+        website?: string;
+        revenueRange?: string;
+      };
+    };
     const source = typeof body?.source === 'string' && body.source.trim() ? body.source.trim() : undefined;
 
     // Validate required fields
@@ -20,10 +32,10 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Optional email validation - only validate if email is provided
     const trimmedName = name.trim();
     const trimmedPhone = phone.trim();
     const providedEmail = (email || '').trim();
+    const survey = (body as { survey?: { businessType?: string; website?: string; revenueRange?: string } }).survey;
 
     // Optional email validation - only validate if email is provided
     if (providedEmail) {
@@ -59,6 +71,7 @@ export async function POST(request: NextRequest) {
         email: providedEmail || null,
         page,
         source,
+        survey,
       });
       if (telegramResult.skipped) {
         console.log('Telegram integration skipped:', telegramResult.error);
@@ -102,6 +115,7 @@ export async function POST(request: NextRequest) {
         email: providedEmail || null,
         page,
         source,
+        survey,
       });
       if (clickUpResult.skipped) {
         console.log('ClickUp integration skipped:', clickUpResult.error);
