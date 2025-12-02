@@ -25,12 +25,14 @@ const businessOptions = [
 ];
 
 const revenueOptions = [
-  { label: "A: $10k-$20k/mo", value: "$10k-$20k/mo" },
-  { label: "B: $20k-$30k/mo", value: "$20k-$30k/mo" },
-  { label: "C: $30k-$40k/mo", value: "$30k-$40k/mo" },
-  { label: "D: $40k-$50k/mo", value: "$40k-$50k/mo" },
-  { label: "E: $50k-$60k/mo", value: "$50k-$60k/mo" },
-  { label: "F: $75k+", value: "$75k+" },
+  { label: "A: $0-$5k/mo", value: "$0-$5k/mo" },
+  { label: "B: $5k-$10k/mo", value: "$5k-$10k/mo" },
+  { label: "C: $10k-$20k/mo", value: "$10k-$20k/mo" },
+  { label: "D: $20k-$30k/mo", value: "$20k-$30k/mo" },
+  { label: "E: $30k-$40k/mo", value: "$30k-$40k/mo" },
+  { label: "F: $40k-$50k/mo", value: "$40k-$50k/mo" },
+  { label: "G: $50k-$60k/mo", value: "$50k-$60k/mo" },
+  { label: "H: $75k+", value: "$75k+" },
 ];
 
 export default function SurveyModal({ open, onClose, onComplete }: SurveyModalProps) {
