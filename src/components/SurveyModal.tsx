@@ -131,7 +131,7 @@ export default function SurveyModal({ open, onClose, onComplete }: SurveyModalPr
                   defaultValue={answers.website || ""}
                   onChange={e => setAnswers(prev => ({ ...prev, website: e.target.value }))}
                   placeholder="yourwebsite.com"
-                  className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-sky-400 focus:ring-2 focus:ring-sky-100"
+                  className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-midnight placeholder-slate-400 focus:border-sky-400 focus:ring-2 focus:ring-sky-100"
                 />
                 <div className="flex justify-end gap-3">
                   <button
