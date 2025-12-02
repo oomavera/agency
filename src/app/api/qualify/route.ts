@@ -50,14 +50,18 @@ export async function POST(req: NextRequest) {
 
     // Insert a minimal lead to trigger Supabase webhook → lead-notify (Telegram)
     // Keep the payload minimal to avoid schema drift issues.
-    try {
-      await supabase.from('leads').insert([{
-        name: encodedName,
-        phone: '+1 (000) 000-0000',
-        email: `noemail+qualify-${Date.now()}@scalinghomeservices.com`,
-      }]);
-    } catch (dbErr) {
-      console.error('QUALIFY leads insert failed', dbErr);
+    if (supabase) {
+      try {
+        await supabase.from('leads').insert([{
+          name: encodedName,
+          phone: '+1 (000) 000-0000',
+          email: `noemail+qualify-${Date.now()}@scalinghomeservices.com`,
+        }]);
+      } catch (dbErr) {
+        console.error('QUALIFY leads insert failed', dbErr);
+      }
+    } else {
+      console.warn('QUALIFY lead insert skipped: Supabase not configured');
     }
 
     // Return success (Telegram is handled asynchronously by Supabase function)
@@ -71,4 +75,3 @@ export async function POST(req: NextRequest) {
 export async function GET() {
   return NextResponse.json({ error: 'Method not allowed' }, { status: 405 });
 }
-

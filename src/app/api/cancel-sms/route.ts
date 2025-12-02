@@ -3,6 +3,15 @@ import { supabase } from '@/lib/supabase';
 import { Client } from '@upstash/qstash';
 
 async function cancelSMSForLead(leadId: string) {
+  if (!supabase) {
+    console.error('Supabase not configured; cancel-sms unavailable');
+    return {
+      success: false,
+      error: 'Supabase not configured',
+      status: 500
+    };
+  }
+
   console.log(`🚫 Canceling SMS for lead ${leadId}...`);
 
   // Look up the lead and get the QStash message ID
