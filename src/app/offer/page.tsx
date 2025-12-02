@@ -43,7 +43,6 @@ export default function OfferPage() {
 		'/Gallery/images/fin2.png',
 		'/Gallery/images/fin3.png',
 		'/Gallery/images/fin4.png',
-		'/Gallery/images/fin7.jpg',
 	];
 
 	// Preload first gallery image for LCP optimization

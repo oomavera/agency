@@ -36,7 +36,6 @@ const galleryImages = [
 	'/Gallery/images/fin2.png',
 	'/Gallery/images/fin3.png',
 	'/Gallery/images/fin4.png',
-	'/Gallery/images/fin7.jpg',
 ];
 
 const DEFAULT_HERO_TITLE = (
