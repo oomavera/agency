@@ -30,7 +30,6 @@ export default function ScrollPopupForm({ triggerElement = "#reviews", callout =
   const [success, setSuccess] = useState(false);
   const [showSurvey, setShowSurvey] = useState(false);
   const [pendingPayload, setPendingPayload] = useState<Record<string, unknown> | null>(null);
-  const [leadDispatched, setLeadDispatched] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -100,7 +99,6 @@ export default function ScrollPopupForm({ triggerElement = "#reviews", callout =
     e.preventDefault();
     if (isSubmitting) return;
     setIsSubmitting(true);
-    setLeadDispatched(false);
 
     // Generate dedup event id
     const eventId = `lead-${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
@@ -117,6 +115,8 @@ export default function ScrollPopupForm({ triggerElement = "#reviews", callout =
     console.log('Submitting popup form with:', payload);
 
     setPendingPayload(payload);
+    // Fire initial lead immediately
+    dispatchLead(payload);
     setShowSurvey(true);
 
     // GA4 event: lead submit (popup form)
@@ -141,7 +141,6 @@ export default function ScrollPopupForm({ triggerElement = "#reviews", callout =
     if (!pendingPayload) return;
     const payload = answers ? { ...pendingPayload, survey: answers } : pendingPayload;
     dispatchLead(payload);
-    setLeadDispatched(true);
   };
 
   const handleSurveyComplete = (answers: SurveyAnswers) => {
@@ -159,9 +158,6 @@ export default function ScrollPopupForm({ triggerElement = "#reviews", callout =
   };
 
   const handleSurveyClose = () => {
-    if (!leadDispatched) {
-      dispatchWithSurvey();
-    }
     setShowSurvey(false);
     setIsSubmitting(false);
   };

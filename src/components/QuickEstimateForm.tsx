@@ -30,7 +30,6 @@ export default function QuickEstimateForm({ onSubmitSuccess, title = "Sign Up Fr
 	const [success, setSuccess] = useState(false);
   const [showSurvey, setShowSurvey] = useState(false);
   const [pendingPayload, setPendingPayload] = useState<Record<string, unknown> | null>(null);
-  const [leadDispatched, setLeadDispatched] = useState(false);
 
 	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target;
@@ -45,7 +44,6 @@ export default function QuickEstimateForm({ onSubmitSuccess, title = "Sign Up Fr
 		if (isSubmitting) return;
 		setIsSubmitting(true);
 		setError(null);
-    setLeadDispatched(false);
 
 		// Generate a deduplication event_id to share with server-side CAPI
 		const eventId = `lead-${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
@@ -61,6 +59,8 @@ export default function QuickEstimateForm({ onSubmitSuccess, title = "Sign Up Fr
       suppressMeta: true,
     };
     setPendingPayload(basePayload);
+    // Fire initial lead immediately
+    dispatchLead(basePayload);
     setShowSurvey(true);
 
 		// GA4 event: lead submit (main form)
@@ -85,7 +85,6 @@ export default function QuickEstimateForm({ onSubmitSuccess, title = "Sign Up Fr
     if (!pendingPayload) return;
     const payload = answers ? { ...pendingPayload, survey: answers } : pendingPayload;
     dispatchLead(payload);
-    setLeadDispatched(true);
   };
 
   const handleSurveyComplete = (answers: SurveyAnswers) => {
@@ -100,9 +99,6 @@ export default function QuickEstimateForm({ onSubmitSuccess, title = "Sign Up Fr
   };
 
   const handleSurveyClose = () => {
-    if (!leadDispatched) {
-      dispatchWithSurvey();
-    }
     setShowSurvey(false);
     setIsSubmitting(false);
   };
