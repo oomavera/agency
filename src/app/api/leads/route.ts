@@ -205,6 +205,10 @@ export async function POST(request: NextRequest) {
           fbp: fbp || null,
           fbc: fbc || null,
           leadSource: body.source || null,
+          qualification: qualification || null,
+          revenueRange: survey?.revenueRange || null,
+          businessType: survey?.businessType || null,
+          website: survey?.website || null,
         });
       }
     })().catch(err => console.error('Meta CAPI dispatch error', err)));

@@ -16,6 +16,10 @@ type ConversionsPayload = {
   fbp?: string | null;
   fbc?: string | null;
   leadSource?: string | null;
+  qualification?: 'qualified' | 'unqualified' | null;
+  revenueRange?: string | null;
+  businessType?: string | null;
+  website?: string | null;
 };
 
 function hashSha256(value: string | undefined | null): string | undefined {
@@ -45,6 +49,10 @@ export async function sendMetaLeadEvent({
   fbp,
   fbc,
   leadSource,
+  qualification,
+  revenueRange,
+  businessType,
+  website,
 }: ConversionsPayload): Promise<void> {
   const endpoint = `https://graph.facebook.com/v17.0/${pixelId}/events`;
 
@@ -71,7 +79,13 @@ export async function sendMetaLeadEvent({
           fbp: fbp || undefined,
           fbc: fbc || undefined,
         },
-        custom_data: leadSource ? { lead_source: leadSource } : undefined,
+        custom_data: {
+          ...(leadSource ? { lead_source: leadSource } : {}),
+          ...(qualification ? { qualification } : {}),
+          ...(revenueRange ? { revenue_range: revenueRange } : {}),
+          ...(businessType ? { business_type: businessType } : {}),
+          ...(website ? { website } : {}),
+        },
       },
     ],
   };
