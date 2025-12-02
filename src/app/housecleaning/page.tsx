@@ -11,8 +11,8 @@ export default function HouseCleaningPage() {
   return (
     <HomeLandingPage
       formPage="housecleaning"
-      formRedirectPath="/Demonstration2"
-      popupRedirectPath="/Demonstration2"
+      formRedirectPath="/schedule"
+      popupRedirectPath="/schedule"
     />
   );
 }

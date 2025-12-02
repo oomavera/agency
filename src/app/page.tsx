@@ -1,5 +1,5 @@
 import HomeLandingPage from "@/components/HomeLandingPage";
 
 export default function HomePage() {
-	return <HomeLandingPage formPage="home" formRedirectPath="/Demonstration2" popupRedirectPath="/Demonstration2" />;
+	return <HomeLandingPage formPage="home" formRedirectPath="/schedule" popupRedirectPath="/schedule" />;
 }
