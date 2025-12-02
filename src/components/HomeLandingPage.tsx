@@ -157,7 +157,12 @@ export default function HomeLandingPage({
 		},
 	];
 
-	const outcomeCards = [
+	const outcomeCards: Array<{
+		icon: React.ComponentType<{ size?: number }>;
+		title: string;
+		body: string[];
+		accent?: string;
+	}> = [
 		{
 			icon: FiPhoneCall,
 			title: "Multiple Qualified Leads Every Day",
