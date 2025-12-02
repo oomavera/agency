@@ -27,11 +27,40 @@ export default function QuickEstimateForm({ onSubmitSuccess, title = "Sign Up Fr
 	});
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const [error, setError] = useState<string | null>(null);
-	const [success, setSuccess] = useState(false);
+const [success, setSuccess] = useState(false);
   const [showSurvey, setShowSurvey] = useState(false);
   const [pendingPayload, setPendingPayload] = useState<Record<string, unknown> | null>(null);
   const [surveyCompleted, setSurveyCompleted] = useState(false);
   const [surveyAbandonSent, setSurveyAbandonSent] = useState(false);
+
+  const classifyRevenue = (range?: string | null): 'qualified' | 'unqualified' | null => {
+    if (!range) return null;
+    if (range.includes('75k')) return 'qualified';
+    const digits = range.match(/\d+/g)?.map(Number) || [];
+    if (!digits.length) return null;
+    const min = Math.min(...digits) * 1000;
+    const max = Math.max(...digits) * 1000;
+    if (min >= 20000 || max >= 20000) return 'qualified';
+    if (max < 20000) return 'unqualified';
+    return null;
+  };
+
+  const trackMetaSurvey = (qualification: 'qualified' | 'unqualified' | null, answers: SurveyAnswers, eventId?: string) => {
+    if (typeof window === 'undefined') return;
+    const fbq = (window as typeof window & { fbq?: (...args: unknown[]) => void }).fbq;
+    if (!fbq) return;
+    const eventName = qualification === 'qualified' ? 'LeadQualified' : qualification === 'unqualified' ? 'LeadUnqualified' : 'Lead';
+    try {
+      fbq('track', eventName, {
+        event_id: eventId,
+        content_name: 'SurveyLead',
+        qualification,
+        revenue_range: answers.revenueRange,
+        business_type: answers.businessType,
+        website: answers.website,
+      });
+    } catch {}
+  };
 
 	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target;
@@ -100,6 +129,9 @@ export default function QuickEstimateForm({ onSubmitSuccess, title = "Sign Up Fr
   const handleSurveyComplete = (answers: SurveyAnswers) => {
     dispatchWithSurvey(answers);
     setSurveyCompleted(true);
+    const eventId = (pendingPayload as { eventId?: string } | null)?.eventId;
+    const qualification = classifyRevenue(answers.revenueRange);
+    trackMetaSurvey(qualification, answers, eventId);
     setShowSurvey(false);
     setSuccess(true);
     if (typeof window !== 'undefined') {
