@@ -126,6 +126,7 @@ export async function addLeadToClickUp(lead: ClickUpLeadPayload): Promise<ClickU
   if (!response.ok && response.status >= 400 && response.status < 500 && basePayload.status) {
     console.error('ClickUp API error on first attempt (will retry without status)', response.status, responseText);
     const { status: _omitStatus, ...fallbackPayload } = basePayload;
+    void _omitStatus;
     const secondAttempt = await sendTask(fallbackPayload);
     response = secondAttempt.response;
     responseText = secondAttempt.responseText;

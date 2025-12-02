@@ -24,7 +24,6 @@ export async function POST(request: NextRequest) {
     const trimmedName = name.trim();
     const trimmedPhone = phone.trim();
     const providedEmail = (email || '').trim();
-    const normalizedEmail = providedEmail ? providedEmail.toLowerCase() : '';
 
     // Optional email validation - only validate if email is provided
     if (providedEmail) {
