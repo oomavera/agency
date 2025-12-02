@@ -10,12 +10,12 @@ const logoPath = "/Gallery/LogoTransparent.png";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Seminole County House Cleaning | Deep & Standard Cleaning | Oviedo, Lake Mary, Winter Springs, Heathrow, Winter Park, Sanford, Geneva, Longwood, Casselberry",
-  description: "Top-rated house cleaning services in Oviedo, Florida. Professional residential cleaning starting at $125. Serving Oviedo, Winter Park, Casselberry, Winter Springs. 5-star rated. Book free estimate today!",
+  title: "10 Free Closed Bookings For Your Home Service Business",
+  description: "In 30 days we will get you 10 closed bookings — completely done-with-you. We handle the offer, ads, sales process, and sales training so you can close deals on the phone.",
   keywords: "house cleaning Oviedo FL, best cleaning services Oviedo Florida, residential cleaning Oviedo, maid service Oviedo, deep cleaning Oviedo, professional cleaners Oviedo, home cleaning Winter Park, cleaning services Casselberry, move in cleaning Oviedo, move out cleaning Oviedo, weekly cleaning Oviedo, biweekly cleaning Oviedo",
   openGraph: {
-    title: "Seminole County House Cleaning | Deep & Standard Cleaning | Oviedo, Lake Mary, Winter Springs, Heathrow, Winter Park, Sanford, Geneva, Longwood, Casselberry",
-    description: "Top-rated house cleaning services in Oviedo, Florida. Professional residential cleaning starting at $125. 5-star rated. Book free estimate today!",
+    title: "10 Free Closed Bookings For Your Home Service Business",
+    description: "In 30 days we will get you 10 closed bookings — completely done-with-you. We handle the offer, ads, sales process, and sales training so you can close deals on the phone.",
     type: "website",
     locale: "en_US",
     siteName: "Scaling Home Services",
