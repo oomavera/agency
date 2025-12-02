@@ -22,6 +22,7 @@ export async function sendTelegramLead({
     businessType?: string;
     website?: string;
     revenueRange?: string;
+    abandoned?: boolean;
   };
 }): Promise<TelegramResult> {
   const botToken = process.env.TG_BOT_TOKEN;
@@ -39,6 +40,7 @@ export async function sendTelegramLead({
     email ? `Email: ${email}` : null,
     page ? `Page: ${page}` : null,
     source ? `Source: ${source}` : null,
+    survey?.abandoned ? 'Survey: dismissed (no answers)' : null,
     survey ? '--- Survey ---' : null,
     survey?.businessType ? `Business Type: ${survey.businessType}` : null,
     survey?.website ? `Website: ${survey.website}` : null,

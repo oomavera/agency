@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import PillButton from "./ui/PillButton";
 import { track } from "../lib/ga4";
@@ -30,6 +30,8 @@ export default function QuickEstimateForm({ onSubmitSuccess, title = "Sign Up Fr
 	const [success, setSuccess] = useState(false);
   const [showSurvey, setShowSurvey] = useState(false);
   const [pendingPayload, setPendingPayload] = useState<Record<string, unknown> | null>(null);
+  const [surveyCompleted, setSurveyCompleted] = useState(false);
+  const [surveyAbandonSent, setSurveyAbandonSent] = useState(false);
 
 	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target;
@@ -44,6 +46,8 @@ export default function QuickEstimateForm({ onSubmitSuccess, title = "Sign Up Fr
 		if (isSubmitting) return;
 		setIsSubmitting(true);
 		setError(null);
+    setSurveyCompleted(false);
+    setSurveyAbandonSent(false);
 
 		// Generate a deduplication event_id to share with server-side CAPI
 		const eventId = `lead-${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
@@ -87,8 +91,15 @@ export default function QuickEstimateForm({ onSubmitSuccess, title = "Sign Up Fr
     dispatchLead(payload);
   };
 
+  const dispatchAbandonedSurvey = () => {
+    if (!pendingPayload || surveyAbandonSent || surveyCompleted) return;
+    dispatchLead({ ...pendingPayload, survey: { abandoned: true } });
+    setSurveyAbandonSent(true);
+  };
+
   const handleSurveyComplete = (answers: SurveyAnswers) => {
     dispatchWithSurvey(answers);
+    setSurveyCompleted(true);
     setShowSurvey(false);
     setSuccess(true);
     if (typeof window !== 'undefined') {
@@ -98,10 +109,22 @@ export default function QuickEstimateForm({ onSubmitSuccess, title = "Sign Up Fr
     onSubmitSuccess?.();
   };
 
-  const handleSurveyClose = () => {
+  const handleSurveyClose = (_reason: 'dismissed') => {
+    dispatchAbandonedSurvey();
     setShowSurvey(false);
     setIsSubmitting(false);
   };
+
+  useEffect(() => {
+    if (!showSurvey) return;
+    const handleBeforeUnload = () => {
+      if (!pendingPayload || surveyAbandonSent || surveyCompleted) return;
+      dispatchLead({ ...pendingPayload, survey: { abandoned: true } });
+      setSurveyAbandonSent(true);
+    };
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    return () => window.removeEventListener('beforeunload', handleBeforeUnload);
+  }, [showSurvey, pendingPayload, surveyAbandonSent, surveyCompleted]);
 
 	if (success) {
 		return (

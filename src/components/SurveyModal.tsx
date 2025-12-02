@@ -11,7 +11,7 @@ export interface SurveyAnswers {
 
 interface SurveyModalProps {
   open: boolean;
-  onClose: () => void;
+  onClose: (reason: 'dismissed') => void;
   onComplete: (answers: SurveyAnswers) => void;
 }
 
@@ -85,7 +85,7 @@ export default function SurveyModal({ open, onClose, onComplete }: SurveyModalPr
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onMouseDown={e => {
-            if (e.target === e.currentTarget) onClose();
+            if (e.target === e.currentTarget) onClose('dismissed');
           }}
         >
           <motion.div
@@ -97,7 +97,7 @@ export default function SurveyModal({ open, onClose, onComplete }: SurveyModalPr
           >
             <button
               className="absolute right-4 top-4 text-slate-400 hover:text-slate-600 transition"
-              onClick={onClose}
+              onClick={() => onClose('dismissed')}
               aria-label="Close survey"
             >
               ✕

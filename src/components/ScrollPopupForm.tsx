@@ -30,6 +30,8 @@ export default function ScrollPopupForm({ triggerElement = "#reviews", callout =
   const [success, setSuccess] = useState(false);
   const [showSurvey, setShowSurvey] = useState(false);
   const [pendingPayload, setPendingPayload] = useState<Record<string, unknown> | null>(null);
+  const [surveyCompleted, setSurveyCompleted] = useState(false);
+  const [surveyAbandonSent, setSurveyAbandonSent] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -99,6 +101,8 @@ export default function ScrollPopupForm({ triggerElement = "#reviews", callout =
     e.preventDefault();
     if (isSubmitting) return;
     setIsSubmitting(true);
+    setSurveyCompleted(false);
+    setSurveyAbandonSent(false);
 
     // Generate dedup event id
     const eventId = `lead-${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
@@ -143,8 +147,15 @@ export default function ScrollPopupForm({ triggerElement = "#reviews", callout =
     dispatchLead(payload);
   };
 
+  const dispatchAbandonedSurvey = () => {
+    if (!pendingPayload || surveyAbandonSent || surveyCompleted) return;
+    dispatchLead({ ...pendingPayload, survey: { abandoned: true } });
+    setSurveyAbandonSent(true);
+  };
+
   const handleSurveyComplete = (answers: SurveyAnswers) => {
     dispatchWithSurvey(answers);
+    setSurveyCompleted(true);
     setSuccess(true);
     setShowSurvey(false);
 		// Redirect to reviews after success
@@ -157,10 +168,22 @@ export default function ScrollPopupForm({ triggerElement = "#reviews", callout =
     }, 10000); // Auto-close after 10 seconds in fallback environments
   };
 
-  const handleSurveyClose = () => {
+  const handleSurveyClose = (_reason: 'dismissed') => {
+    dispatchAbandonedSurvey();
     setShowSurvey(false);
     setIsSubmitting(false);
   };
+
+  useEffect(() => {
+    if (!showSurvey) return;
+    const handleBeforeUnload = () => {
+      if (!pendingPayload || surveyAbandonSent || surveyCompleted) return;
+      dispatchLead({ ...pendingPayload, survey: { abandoned: true } });
+      setSurveyAbandonSent(true);
+    };
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    return () => window.removeEventListener('beforeunload', handleBeforeUnload);
+  }, [showSurvey, pendingPayload, surveyAbandonSent, surveyCompleted]);
 
   return (
     <>

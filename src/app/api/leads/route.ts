@@ -20,6 +20,7 @@ export async function POST(request: NextRequest) {
         businessType?: string;
         website?: string;
         revenueRange?: string;
+        abandoned?: boolean;
       };
     };
     const source = typeof body?.source === 'string' && body.source.trim() ? body.source.trim() : undefined;
@@ -35,7 +36,7 @@ export async function POST(request: NextRequest) {
     const trimmedName = name.trim();
     const trimmedPhone = phone.trim();
     const providedEmail = (email || '').trim();
-    const survey = (body as { survey?: { businessType?: string; website?: string; revenueRange?: string } }).survey;
+    const survey = (body as { survey?: { businessType?: string; website?: string; revenueRange?: string; abandoned?: boolean } }).survey;
 
     // Optional email validation - only validate if email is provided
     if (providedEmail) {
