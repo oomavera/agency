@@ -11,6 +11,7 @@ export async function sendTelegramLead({
   email,
   page,
   source,
+  qualification,
   survey,
 }: {
   name: string;
@@ -18,6 +19,7 @@ export async function sendTelegramLead({
   email?: string | null;
   page?: string;
   source?: string;
+  qualification?: 'qualified' | 'unqualified';
   survey?: {
     businessType?: string;
     website?: string;
@@ -40,6 +42,7 @@ export async function sendTelegramLead({
     email ? `Email: ${email}` : null,
     page ? `Page: ${page}` : null,
     source ? `Source: ${source}` : null,
+    qualification ? `Qualification: ${qualification}` : null,
     survey?.abandoned ? 'Survey: dismissed (no answers)' : null,
     survey ? '--- Survey ---' : null,
     survey?.businessType ? `Business Type: ${survey.businessType}` : null,

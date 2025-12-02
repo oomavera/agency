@@ -22,6 +22,7 @@ export async function POST(request: NextRequest) {
         revenueRange?: string;
         abandoned?: boolean;
       };
+      qualification?: 'qualified' | 'unqualified';
     };
     const source = typeof body?.source === 'string' && body.source.trim() ? body.source.trim() : undefined;
 
@@ -65,6 +66,20 @@ export async function POST(request: NextRequest) {
 
     const integrationTasks: Promise<void>[] = [];
 
+    const classifyQualification = (range?: string | null): 'qualified' | 'unqualified' | null => {
+      if (!range) return null;
+      const digits = range.match(/\d+/g)?.map(Number) || [];
+      if (!digits.length) return null;
+      const min = Math.min(...digits) * 1000;
+      const max = Math.max(...digits) * 1000;
+      if (range.includes('75k')) return 'qualified';
+      if (min >= 20000 || max >= 20000) return 'qualified';
+      if (max < 20000) return 'unqualified';
+      return null;
+    };
+
+    const qualification = classifyQualification(survey?.revenueRange);
+
     integrationTasks.push((async () => {
       const telegramResult = await sendTelegramLead({
         name: trimmedName,
@@ -72,6 +87,7 @@ export async function POST(request: NextRequest) {
         email: providedEmail || null,
         page,
         source,
+        qualification: qualification || undefined,
         survey,
       });
       if (telegramResult.skipped) {
@@ -116,6 +132,7 @@ export async function POST(request: NextRequest) {
         email: providedEmail || null,
         page,
         source,
+        qualification: qualification || undefined,
         survey,
       });
       if (clickUpResult.skipped) {
@@ -153,7 +170,8 @@ export async function POST(request: NextRequest) {
     })().catch(err => console.error('OpenPhone integration error:', err)));
 
     integrationTasks.push((async () => {
-      if (body?.suppressMeta === true) return;
+      const metaSuppressed = body?.suppressMeta === true && !qualification;
+      if (metaSuppressed) return;
         const accessToken = process.env.META_ACCESS_TOKEN as string | undefined;
         const pixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID as string | undefined;
         if (accessToken && pixelId) {
@@ -176,7 +194,7 @@ export async function POST(request: NextRequest) {
         await sendMetaLeadEvent({
           pixelId,
           accessToken,
-          eventName: 'Lead',
+          eventName: qualification === 'qualified' ? 'LeadQualified' : qualification === 'unqualified' ? 'LeadUnqualified' : 'Lead',
           eventSourceUrl: referer,
           eventId: eventId || null,
           externalId: externalId || null,

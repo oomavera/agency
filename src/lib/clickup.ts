@@ -6,6 +6,7 @@ export interface ClickUpLeadPayload {
   email?: string | null;
   page?: string;
   source?: string;
+  qualification?: 'qualified' | 'unqualified';
   survey?: {
     businessType?: string;
     website?: string;
@@ -40,6 +41,7 @@ const buildDescription = (lead: ClickUpLeadPayload) => {
     `Name: ${lead.name}`,
     `Phone: ${lead.phone}`,
     lead.email ? `Email: ${lead.email}` : null,
+    lead.qualification ? `Qualification: ${lead.qualification}` : null,
     lead.survey ? '--- Survey ---' : null,
     lead.survey?.abandoned ? 'Survey: dismissed (no answers provided)' : null,
     lead.survey?.businessType ? `Business Type: ${lead.survey.businessType}` : null,
@@ -68,6 +70,7 @@ export async function addLeadToClickUp(lead: ClickUpLeadPayload): Promise<ClickU
   if (lead.source) tags.add(lead.source.toLowerCase().replace(/\s+/g, '-'));
   if (lead.survey?.businessType) tags.add(lead.survey.businessType.toLowerCase().replace(/\s+/g, '-'));
   if (lead.survey?.abandoned) tags.add('survey-dismissed');
+  if (lead.qualification) tags.add(lead.qualification);
 
   const basePayload: Record<string, unknown> = {
     name: lead.page ? `${lead.name} (${lead.page})` : lead.name,
