@@ -217,7 +217,7 @@ export default function HomeLandingPage({
 					{/* Header */}
 					<header className="w-full max-w-7xl mx-auto px-4 sm:px-8 py-3 sm:py-6">
 						{/* Mobile header (Apple-like) */}
-						<div className="flex items-center justify-center">
+						<div className="flex items-center justify-center sm:hidden">
 							<Image src={logo} alt="Scaling Home Services" width={256} height={64} priority fetchPriority="high" sizes="320px" decoding="async" style={{ height: '52px', width: 'auto', objectFit: 'contain', opacity: 0.95, filter: 'invert(1) brightness(1.6)' }} />
 						</div>
 						<div className="hidden sm:flex items-center justify-center">
