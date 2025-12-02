@@ -118,7 +118,12 @@ export default function HomeLandingPage({
 		};
 	}, []);
 
-	const pitfallCards = [
+	const pitfallCards: Array<{
+		icon: React.ComponentType<{ size?: number }>;
+		title: string;
+		body: string[];
+		accent?: string;
+	}> = [
 		{
 			icon: FiEdit3,
 			title: "Community Posts like Nextdoor or facebook.",
