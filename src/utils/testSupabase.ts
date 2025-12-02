@@ -1,12 +1,19 @@
-import { supabase } from '../lib/supabase';
+import { supabase, requireSupabase, hasSupabaseConfig } from '../lib/supabase';
 
 export async function testSupabaseConnection() {
+  if (!hasSupabaseConfig || !supabase) {
+    console.error('❌ Supabase not configured. Set NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY before running this test.');
+    return false;
+  }
+
+  const client = requireSupabase();
+
   try {
     console.log('🔍 Testing Supabase connection...');
     
     // Test 1: Basic connection test
     console.log('📍 Step 1: Testing basic connection...');
-    const { data: connectionTest, error: connectionError } = await supabase
+    const { data: connectionTest, error: connectionError } = await client
       .from('leads')
       .select('count', { count: 'exact', head: true });
     
@@ -26,7 +33,7 @@ export async function testSupabaseConnection() {
     // Test 2: Check table structure
     console.log('📍 Step 2: Testing table structure...');
     
-    const { error: tableError } = await supabase
+    const { error: tableError } = await client
       .from('leads')
       .select('*')
       .limit(1);
@@ -54,7 +61,7 @@ export async function testSupabaseConnection() {
       service: 'standard'
     };
     
-    const { data: insertTest, error: insertError } = await supabase
+    const { data: insertTest, error: insertError } = await client
       .from('leads')
       .insert([testLead])
       .select();
@@ -74,7 +81,7 @@ export async function testSupabaseConnection() {
     // Test 4: Clean up test record
     if (insertTest && insertTest[0]) {
       console.log('📍 Step 4: Cleaning up test record...');
-      const { error: deleteError } = await supabase
+      const { error: deleteError } = await client
         .from('leads')
         .delete()
         .eq('id', insertTest[0].id);
@@ -101,6 +108,13 @@ export async function testSupabaseConnection() {
 }
 
 export async function checkTableSchema() {
+  if (!hasSupabaseConfig || !supabase) {
+    console.error('❌ Supabase not configured. Set NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY before running this test.');
+    return false;
+  }
+
+  const client = requireSupabase();
+
   try {
     console.log('🔍 Checking leads table schema...');
     console.log('📍 Supabase URL:', 'https://xdcvdiwtkdksczlfidil.supabase.co');
@@ -108,7 +122,7 @@ export async function checkTableSchema() {
     // Test the basic connection first
     console.log('📍 Testing basic Supabase connection...');
     
-    const { error } = await supabase
+    const { error } = await client
       .from('leads')
       .select('*')
       .limit(0);
@@ -159,11 +173,18 @@ export async function checkTableSchema() {
 }
 
 export async function testBasicConnection() {
+  if (!hasSupabaseConfig || !supabase) {
+    console.error('❌ Supabase not configured. Set NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY before running this test.');
+    return false;
+  }
+
+  const client = requireSupabase();
+
   try {
     console.log('🔍 Testing basic Supabase connectivity...');
     
     // Test the most basic operation
-    const { error } = await supabase.auth.getSession();
+    const { error } = await client.auth.getSession();
     
     if (error) {
       console.error('❌ Basic connection test failed:', error);
