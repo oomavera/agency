@@ -142,6 +142,7 @@ const [success, setSuccess] = useState(false);
   };
 
   const handleSurveyClose = (_reason: 'dismissed') => {
+    void _reason; // mark as used to satisfy lint
     dispatchAbandonedSurvey();
     setShowSurvey(false);
     setIsSubmitting(false);

@@ -201,6 +201,7 @@ export default function ScrollPopupForm({ triggerElement = "#reviews", callout =
   };
 
   const handleSurveyClose = (_reason: 'dismissed') => {
+    void _reason; // mark as used to satisfy lint
     dispatchAbandonedSurvey();
     setShowSurvey(false);
     setIsSubmitting(false);
