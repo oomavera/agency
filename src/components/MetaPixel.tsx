@@ -26,7 +26,11 @@ export default function MetaPixel({
     pixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID,
 }: MetaPixelProps) {
 	useEffect(() => {
-		if (!pixelId) return;
+    const resolvedPixelId = pixelId || process.env.NEXT_PUBLIC_META_PIXEL_ID || "1199673815405369"; // fallback to provided pixel ID
+		if (!resolvedPixelId) {
+      console.warn("Meta Pixel skipped: missing pixel id");
+      return;
+    }
 		if (typeof window === "undefined" || typeof document === "undefined") return;
         // Defer initialization until browser is idle to reduce TBT; fall back to first input/visibility
 		let initialized = false;
@@ -65,7 +69,7 @@ export default function MetaPixel({
 			// Queue init + PageView (these will flush when fbevents.js finishes loading)
 			try {
 				const pageViewEventId = `${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
-				fbq("init", String(pixelId));
+				fbq("init", String(resolvedPixelId));
 				fbq("track", "PageView", { event_id: pageViewEventId });
 			} catch {}
 		};
